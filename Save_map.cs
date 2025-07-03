@@ -9,7 +9,7 @@ namespace Map_war
     internal class Save_Map
     {
 
-        public void file_save()
+        public void file_save(List<Map_Marker> Markers)
         {
             // markers — это List<MapMarker>, который вы наполняете в ходе работы приложения
 
@@ -18,7 +18,7 @@ namespace Map_war
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 Form1 form = new Form1();
-                File.WriteAllText(sfd.FileName, JsonConvert.SerializeObject(form.Markers, Formatting.Indented));
+                File.WriteAllText(sfd.FileName, JsonConvert.SerializeObject(Markers, Formatting.Indented));
                 //File.WriteAllText(sfd.FileName, json);
             }
         }

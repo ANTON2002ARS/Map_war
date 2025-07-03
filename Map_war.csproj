@@ -119,5 +119,77 @@
   <ItemGroup>
     <None Include="Resources\знак_2_мд_кп.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\октябрьской_городок.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ефремов.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_30ALKM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_50F16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_52СМАКР.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_А10А.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_баражирование.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_вертолеты.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_голые вертолет.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_досигаемостьавиации.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_Е3А.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_курсированиетранспорта.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_машинасбольшимиклешнями.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_направлениедвижениекружочковПВО.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_ОБЛАСТЬСДВУМЯКРУЖОЧКАМИПВО.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_обрРЭБ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_ПВО.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_ПВО2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_полувертолеты.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_помехи.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_РЛС.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_РЛСквадрат.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_РЭБ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_танксклешней.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -118,35 +118,86 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="знак_1_ак" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_1_ак.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ефремов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ефремов.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="знак_1_тд" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_1_тд.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="знак_2_мд" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_2_мд.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="знак_2_мд_кп" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_2_мд_кп.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="знак_3_мд" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_3_мд.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="знак_3тбр_кп" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_3тбр_кп.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="знак_30ALKM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_30ALKM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="знак_42_тиоэск" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\знак_42_тиоэск.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="знак_4_тд" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\знак_4_тд.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="знак_50F16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_50F16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_52СМАКР" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_52СМАКР.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_А10А" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_А10А.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_баражирование" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_баражирование.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_вертолеты" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_вертолеты.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_голые_вертолет" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_голые вертолет.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_досигаемостьавиации" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_досигаемостьавиации.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_Е3А" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_Е3А.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_курсированиетранспорта" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_курсированиетранспорта.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_машинасбольшимиклешнями" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_машинасбольшимиклешнями.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_направлениедвижениекружочковПВО" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_направлениедвижениекружочковПВО.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_ОБЛАСТЬСДВУМЯКРУЖОЧКАМИПВО" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_ОБЛАСТЬСДВУМЯКРУЖОЧКАМИПВО.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="знак_обркп_тпу" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\знак_обркп_тпу.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="знак_обрРЭБ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_обрРЭБ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_ПВО" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_ПВО.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_ПВО2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_ПВО2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_полувертолеты" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_полувертолеты.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_помехи" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_помехи.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_РЛС" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_РЛС.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_РЛСквадрат" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_РЛСквадрат.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_РЭБ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_РЭБ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="знак_Т" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\знак_Т.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="знак_танксклешней" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\знак_танксклешней.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="октябрьской_городок" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\октябрьской_городок.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="СВЕТЛОВ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\СВЕТЛОВ.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

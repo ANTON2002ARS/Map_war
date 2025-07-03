@@ -11,9 +11,10 @@ using System.Windows.Forms;
 namespace Map_war
 {
     public partial class Form1 : Form
-    {
+    {        
+        private string str_set;
         // Глобальные переменные формы
-        float zoom = 1.0f; // коэффициент масштабирования
+        float zoom = 0.5f; // коэффициент масштабирования
         Point mouseDownPosition; // точка нажатия мыши
         Point scrollPositionOnMouseDown; // положение скролла в момент нажатия
         public List<Map_Marker> Markers { get; set; } = new List<Map_Marker>();
@@ -24,8 +25,7 @@ namespace Map_war
             InitializeComponent();
         }
 
-
-                
+        // символ на карту        
         private void Span_ZNAK(object sender, MouseEventArgs e)
         {
             Image img = picture_map.Image;
@@ -55,15 +55,18 @@ namespace Map_war
             float imageX = x / ratio;
             float imageY = y / ratio;
 
+            Draw_Image(imageX, imageY);     
+        }
+
+        private void Draw_Image(float X, float Y)
+        {
             // Масштаб для overlayImage
             float scale = 0.5f;
             int newWidth = (int)(overlayImage.Width * scale);
             int newHeight = (int)(overlayImage.Height * scale);
-
             // Смещаем, чтобы центрировать
-            int drawX = (int)(imageX - newWidth / 2);
-            int drawY = (int)(imageY - newHeight / 2);
-
+            int drawX = (int)(X - newWidth / 2);
+            int drawY = (int)(Y - newHeight / 2);
             // Получаем Bitmap для рисования (убедитесь, что это Bitmap)
             Bitmap baseImage = (Bitmap)picture_map.Image;
 
@@ -74,6 +77,8 @@ namespace Map_war
 
             picture_map.Invalidate();
         }
+
+        // получить координаты мышки в маштабе
         private Point TranslateZoomMousePosition(Point coordinates)
         {
             if (picture_map.Image == null)
@@ -109,28 +114,38 @@ namespace Map_war
 
             return new Point(x, y);
         }
-
-        private void Span_TEXT(object sender, MouseEventArgs e)
+        // поставить текст
+        private void Span_TEXT(MouseEventArgs e)
         {
-            Point imagePoint = TranslateZoomMousePosition(e.Location);
+            if (str_set == "")
+                return;            
+            button_text.BackColor = Color.White;
 
-            if (imagePoint.X < 0 || imagePoint.Y < 0 ||
-                imagePoint.X >= picture_map.Image.Width || imagePoint.Y >= picture_map.Image.Height)
+            Point imagePoint = TranslateZoomMousePosition(e.Location);
+            Draw_Text(imagePoint);
+            str_set = text_input.Text = "";
+        }
+
+        private void Draw_Text(Point Point_Klick)
+        {
+            if (Point_Klick.X < 0 || Point_Klick.Y < 0 ||
+                Point_Klick.X >= picture_map.Image.Width || Point_Klick.Y >= picture_map.Image.Height)
                 return; // Клик вне изображения
 
             Bitmap bmp = new Bitmap(picture_map.Image);
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                string text = "Ваш текст";
-                Font font = new Font("Arial", 16, FontStyle.Bold);
-                Brush brush = Brushes.Red;
-
+                string text = str_set;
+                Font font = new Font("Arial", 24, FontStyle.Bold);
+                Brush brush = Brushes.Black;
                 // Рисуем текст с верхним левым углом в точке клика по изображению
-                g.DrawString(text, font, brush, imagePoint);
+                g.DrawString(text, font, brush, Point_Klick);
             }
 
             picture_map.Image = bmp;
+            picture_map.Refresh(); // Явное обновление
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -167,8 +182,6 @@ namespace Map_war
 
             // Устанавливаем прокрутку (передаём положительные значения)
             panel_map.AutoScrollPosition = new Point(newScrollX, newScrollY);
-
-
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
@@ -185,8 +198,14 @@ namespace Map_war
             }
             else if (e.Button == MouseButtons.Left)
             {
-                //Span_ZNAK(sender, e);
-                Span_TEXT(sender, e);
+                if(str_set != "")
+                {
+                    Span_TEXT(e);
+                }
+                else
+                {
+                    Span_ZNAK(sender, e);
+                }                
             }
         }
 
@@ -200,10 +219,70 @@ namespace Map_war
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_text_Click(object sender, EventArgs e)
+        {
+            str_set = text_input.Text;
+            button_text.BackColor = Color.Green;
+        }
+
+        private void button_save_Click(object sender, EventArgs e)
         {
             Save_Map save_Map = new Save_Map();
-            save_Map.file_save();
+            save_Map.file_save(this.Markers);
+        }
+
+        private void button_open_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+           "Переключение карты сотрет все обозначение с карты",
+           "Внимание",
+            MessageBoxButtons.YesNo,     // Кнопки Да и Нет
+           MessageBoxIcon.Question      // Значок вопроса
+           );
+
+            if (result == DialogResult.Yes)
+            {
+                picture_map.Image = Properties.Resources.СВЕТЛОВ;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Переключение карты сотрет все обозначение с карты",    
+            "Внимание",             
+             MessageBoxButtons.YesNo,     // Кнопки Да и Нет
+            MessageBoxIcon.Question      // Значок вопроса
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                picture_map.Image = Properties.Resources.октябрьской_городок;
+            }  
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Переключение карты сотрет все обозначение с карты",
+            "Внимание",
+             MessageBoxButtons.YesNo,     // Кнопки Да и Нет
+            MessageBoxIcon.Question      // Значок вопроса
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                picture_map.Image = Properties.Resources.ефремов;
+            }            
+        }
+
+        private void picture_map_Click(object sender, EventArgs e)
+        {
 
         }
     }
