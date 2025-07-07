@@ -17,10 +17,11 @@ namespace Map_war
         float zoom = 0.5f; // коэффициент масштабирования
         Point mouseDownPosition; // точка нажатия мыши
         Point scrollPositionOnMouseDown; // положение скролла в момент нажатия
-        public List<Map_Marker> Markers = new List<Map_Marker>();
-        public List<Map_Text> Texts = new List<Map_Text>();
+        private MapData currentMapData = new MapData();
 
         Image overlayImage;      // изображение, которое будем рисовать по клику
+        string ResourceName;    // название изображение из ресурсов
+
         public Form1()
         {
             InitializeComponent();
@@ -58,14 +59,33 @@ namespace Map_war
             float imageY = y / ratio;
 
             Draw_Image(imageX, imageY, overlayImage);
-            Map_Marker marker = new Map_Marker();
-            marker.Znak = overlayImage;
+            Map_Marker marker = new Map_Marker();            
             marker.Pos_X = imageX;
             marker.Pos_Y = imageY;
-            Markers.Add(marker);
+            marker.ResourceName = this.ResourceName;
+            currentMapData.Markers.Add(marker);
             overlayImage = null;
+            this.ResourceName = null;
             Console.WriteLine("Установка знака:" + marker.Pos_X + " " + marker.Pos_Y);
         }
+
+        private void UpdateMarkersUI(List<Map_Marker> markers)
+        {
+            // Обновите элементы управления, которые отображают маркеры
+            foreach (var marker in currentMapData.Markers)
+            {
+                Draw_Image(marker.Pos_X, marker.Pos_Y, marker.Get_ZNAK());
+            }
+        }
+
+        private void UpdateTextsUI(List<Map_Text> texts)
+        {
+            // Обновите элементы управления, которые отображают тексты
+            foreach (var text in currentMapData.Texts)
+            {
+                Draw_Text(text.Position, text.Text_map);
+            }
+        }       
 
         private void Draw_Image(float X, float Y, Image image)
         {
@@ -131,17 +151,17 @@ namespace Map_war
             button_text.BackColor = Color.White;
 
             Point imagePoint = TranslateZoomMousePosition(e.Location);
-            Draw_Text(imagePoint);
+            Draw_Text(imagePoint, str_set);
 
             Map_Text map_text = new Map_Text();
             map_text.Position = imagePoint;
-            map_text.Text_map = str_set;
-            Texts.Add(map_text);
+            map_text.Text_map = str_set;    
+            currentMapData.Texts.Add(map_text);
 
             str_set = text_input.Text = "";
         }
 
-        private void Draw_Text(Point Point_Klick)
+        private void Draw_Text(Point Point_Klick, string text)
         {
             if (Point_Klick.X < 0 || Point_Klick.Y < 0 ||
                 Point_Klick.X >= picture_map.Image.Width || Point_Klick.Y >= picture_map.Image.Height)
@@ -151,7 +171,7 @@ namespace Map_war
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                string text = str_set;
+                //string text = str_set;
                 Font font = new Font("Arial", 24, FontStyle.Bold);
                 Brush brush = Brushes.Black;
                 // Рисуем текст с верхним левым углом в точке клика по изображению
@@ -240,14 +260,44 @@ namespace Map_war
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            Save_Map save_Map = new Save_Map();
-            save_Map.file_save(this.Markers);
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Map files (*.map)|*.map|All files (*.*)|*.*";
+                saveFileDialog.DefaultExt = "map";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string path = saveFileDialog.FileName;
+
+                    // Перед сохранением обновите currentMapData из UI, если нужно
+                    // Например, currentMapData.Markers = GetMarkersFromUI();
+                    // currentMapData.Texts = GetTextsFromUI();
+                    Save_Map save = new Save_Map();
+                    save.SaveMapDataToFile(path, currentMapData);
+                    MessageBox.Show("Файл сохранён успешно.", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void button_open_Click(object sender, EventArgs e)
         {
-            Save_Map save_Map = new Save_Map();
-            Markers = save_Map.file_open();
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Map files (*.map)|*.map|All files (*.*)|*.*";
+                openFileDialog.DefaultExt = "map";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string path = openFileDialog.FileName;
+                    Save_Map save = new Save_Map();
+                    currentMapData = save.LoadMapDataFromFile(path);
+
+                    // Обновите интерфейс, например:
+
+                    UpdateMarkersUI(currentMapData.Markers);
+                    UpdateTextsUI(currentMapData.Texts);
+                }
+            }
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -262,8 +312,7 @@ namespace Map_war
             if (result == DialogResult.Yes)
             {
                 picture_map.Image = Properties.Resources.СВЕТЛОВ;
-                Markers.Clear();
-                Texts.Clear();
+                currentMapData.Clear_Data();
             }
         }
 
@@ -279,8 +328,7 @@ namespace Map_war
             if (result == DialogResult.Yes)
             {
                 picture_map.Image = Properties.Resources.октябрьской_городок;
-                Markers.Clear();
-                Texts.Clear();
+                currentMapData.Clear_Data();
             }  
         }
 
@@ -296,109 +344,110 @@ namespace Map_war
             if (result == DialogResult.Yes)
             {
                 picture_map.Image = Properties.Resources.ефремов;
-                Markers.Clear();
-                Texts.Clear();
-            }            
+                currentMapData.Clear_Data();
+
+            }
         }        
 
         private void button_30ALKM_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_30ALKM;
+            overlayImage = Properties.Resources.знак_верт;
+            this.ResourceName = "знак_верт";
         }
 
         private void button_50F16_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_50F16;
+            //overlayImage = Properties.Resources.знак_50F16;
         }
 
         private void button_52СМАКР_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_52СМАКР;
+           // overlayImage = Properties.Resources.знак_52СМАКР;
         }
 
         private void button_А10А_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_А10А;
+           //  overlayImage = Properties.Resources.знак_А10А;
         }
 
         private void button_move_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_баражирование;
+            //overlayImage = Properties.Resources.знак_баражирование;
         }
 
         private void button_Helicopters_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_вертолеты;
+            //overlayImage = Properties.Resources.знак_вертолеты;
         }
 
         private void button_W_Helicopters_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_голые_вертолет;
+           // overlayImage = Properties.Resources.знак_голые_вертолет;
         }
 
         private void button_reach_of_aviation_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_досигаемостьавиации;
+            //overlayImage = Properties.Resources.знак_досигаемостьавиации;
         }
 
         private void button_EZA_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_Е3А;
+            //overlayImage = Properties.Resources.знак_Е3А;
         }
 
         private void button_Running_transport_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_курсированиетранспорта;
+           // overlayImage = Properties.Resources.знак_курсированиетранспорта;
         }
 
         private void button_ABM_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_Е3А;
+           // overlayImage = Properties.Resources.знак_Е3А;
         }
 
         private void button_Fare_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_направлениедвижениекружочковПВО;
+           // overlayImage = Properties.Resources.знак_направлениедвижениекружочковПВО;
         }
 
         private void button_RAB_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_обрРЭБ;
+           // overlayImage = Properties.Resources.знак_обрРЭБ;
         }
 
         private void button_back_PVO_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_ПВО2;
+           // overlayImage = Properties.Resources.знак_ПВО2;
         }
 
         private void button_time_PVO_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_обркп_тпу;
+           // overlayImage = Properties.Resources.знак_обркп_тпу;
         }
 
         private void button_VOP_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_полувертолеты;
+          //  overlayImage = Properties.Resources.знак_полувертолеты;
         }
 
         private void button_interfer_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_РЭБ;
+           // overlayImage = Properties.Resources.знак_РЭБ;
         }
 
         private void button_POU_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_обркп_тпу;
+           // overlayImage = Properties.Resources.знак_обркп_тпу;
         }
 
         private void button_OU_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_РЛСквадрат;
+           // overlayImage = Properties.Resources.знак_РЛСквадрат;
         }
 
         private void button_RAEB_Click(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_РЭБ;
+          //  overlayImage = Properties.Resources.знак_РЭБ;
         }
     }
 }

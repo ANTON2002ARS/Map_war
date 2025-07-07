@@ -63,6 +63,26 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3_мд {
+            get {
+                object obj = ResourceManager.GetObject("_3_мд", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _4_мсд {
+            get {
+                object obj = ResourceManager.GetObject("_4_мсд", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ефремов {
             get {
                 object obj = ResourceManager.GetObject("ефремов", resourceCulture);
@@ -73,9 +93,219 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_30ALKM {
+        internal static System.Drawing.Bitmap знак {
             get {
-                object obj = ResourceManager.GetObject("знак_30ALKM", resourceCulture);
+                object obj = ResourceManager.GetObject("знак", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_1 {
+            get {
+                object obj = ResourceManager.GetObject("знак_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_1_ак {
+            get {
+                object obj = ResourceManager.GetObject("знак_1_ак", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_1_ак_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_1_ак_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_1_с {
+            get {
+                object obj = ResourceManager.GetObject("знак_1_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_1_тд {
+            get {
+                object obj = ResourceManager.GetObject("знак_1_тд", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_1_тд_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_1_тд_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_2_мд {
+            get {
+                object obj = ResourceManager.GetObject("знак_2_мд", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_2_мд_кп {
+            get {
+                object obj = ResourceManager.GetObject("знак_2_мд_кп", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_2_мд_кп_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_2_мд_кп_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_2_мд_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_2_мд_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_3_мд_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_3_мд_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_32_миг {
+            get {
+                object obj = ResourceManager.GetObject("знак_32_миг", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_32_миг_с {
+            get {
+                object obj = ResourceManager.GetObject("знак_32_миг_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_3тбр_кп {
+            get {
+                object obj = ResourceManager.GetObject("знак_3тбр_кп", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_3тбр_кп_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_3тбр_кп_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_4_мсд {
+            get {
+                object obj = ResourceManager.GetObject("знак_4_мсд", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_4_мсд_ {
+            get {
+                object obj = ResourceManager.GetObject("знак_4_мсд_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_4_мсд_с {
+            get {
+                object obj = ResourceManager.GetObject("знак_4_мсд_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_4_мсд_сс {
+            get {
+                object obj = ResourceManager.GetObject("знак_4_мсд_сс", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_4_тд {
+            get {
+                object obj = ResourceManager.GetObject("знак_4_тд", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_4_тд_кр {
+            get {
+                object obj = ResourceManager.GetObject("знак_4_тд_кр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +323,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_50F16 {
+        internal static System.Drawing.Bitmap знак_42_тиоэск_кр {
             get {
-                object obj = ResourceManager.GetObject("знак_50F16", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_42_тиоэск_кр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +333,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_52СМАКР {
+        internal static System.Drawing.Bitmap знак_верт {
             get {
-                object obj = ResourceManager.GetObject("знак_52СМАКР", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_верт", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +343,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_А10А {
+        internal static System.Drawing.Bitmap знак_верт_С {
             get {
-                object obj = ResourceManager.GetObject("знак_А10А", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_верт_С", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +353,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_баражирование {
+        internal static System.Drawing.Bitmap знак_вывод_истр {
             get {
-                object obj = ResourceManager.GetObject("знак_баражирование", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_вывод_истр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +363,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_вертолеты {
+        internal static System.Drawing.Bitmap знак_вывод_истр_с {
             get {
-                object obj = ResourceManager.GetObject("знак_вертолеты", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_вывод_истр_с", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +373,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_голые_вертолет {
+        internal static System.Drawing.Bitmap знак_зад_ближ {
             get {
-                object obj = ResourceManager.GetObject("знак_голые_вертолет", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_зад_ближ", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +383,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_досигаемостьавиации {
+        internal static System.Drawing.Bitmap знак_зад_ближ_с {
             get {
-                object obj = ResourceManager.GetObject("знак_досигаемостьавиации", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_зад_ближ_с", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +393,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_Е3А {
+        internal static System.Drawing.Bitmap знак_зад_дал {
             get {
-                object obj = ResourceManager.GetObject("знак_Е3А", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_зад_дал", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +403,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_курсированиетранспорта {
+        internal static System.Drawing.Bitmap знак_зад_дал_с {
             get {
-                object obj = ResourceManager.GetObject("знак_курсированиетранспорта", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_зад_дал_с", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +413,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_машинасбольшимиклешнями {
+        internal static System.Drawing.Bitmap знак_зона__разведки_вц {
             get {
-                object obj = ResourceManager.GetObject("знак_машинасбольшимиклешнями", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_зона__разведки_вц", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +423,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_направлениедвижениекружочковПВО {
+        internal static System.Drawing.Bitmap знак_истр {
             get {
-                object obj = ResourceManager.GetObject("знак_направлениедвижениекружочковПВО", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_истр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +433,99 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_ОБЛАСТЬСДВУМЯКРУЖОЧКАМИПВО {
+        internal static System.Drawing.Bitmap знак_истр_с {
             get {
-                object obj = ResourceManager.GetObject("знак_ОБЛАСТЬСДВУМЯКРУЖОЧКАМИПВО", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_истр_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_исход_рубеж_с {
+            get {
+                object obj = ResourceManager.GetObject("знак_исход_рубеж_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_исходный_рубеж {
+            get {
+                object obj = ResourceManager.GetObject("знак_исходный_рубеж", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_линия_арм {
+            get {
+                object obj = ResourceManager.GetObject("знак_линия_арм", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_линия_арм_С {
+            get {
+                object obj = ResourceManager.GetObject("знак_линия_арм_С", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_линия_див {
+            get {
+                object obj = ResourceManager.GetObject("знак_линия_див", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_линия_див_с {
+            get {
+                object obj = ResourceManager.GetObject("знак_линия_див_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_линия_корпусная {
+            get {
+                object obj = ResourceManager.GetObject("знак_линия_корпусная", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_линия_корпусная_с {
+            get {
+                object obj = ResourceManager.GetObject("знак_линия_корпусная_с", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_маневр {
+            get {
+                object obj = ResourceManager.GetObject("знак_маневр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +543,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_обрРЭБ {
+        internal static System.Drawing.Bitmap знак_обркп_тпу_кр {
             get {
-                object obj = ResourceManager.GetObject("знак_обрРЭБ", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_обркп_тпу_кр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +553,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_ПВО {
+        internal static System.Drawing.Bitmap знак_реп {
             get {
-                object obj = ResourceManager.GetObject("знак_ПВО", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_реп", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +563,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_ПВО2 {
+        internal static System.Drawing.Bitmap знак_рубеж {
             get {
-                object obj = ResourceManager.GetObject("знак_ПВО2", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_рубеж", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +573,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_полувертолеты {
+        internal static System.Drawing.Bitmap знак_рубеж_с {
             get {
-                object obj = ResourceManager.GetObject("знак_полувертолеты", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_рубеж_с", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +583,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_помехи {
+        internal static System.Drawing.Bitmap знак_рубеж_сн {
             get {
-                object obj = ResourceManager.GetObject("знак_помехи", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_рубеж_сн", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +593,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_РЛС {
+        internal static System.Drawing.Bitmap знак_с {
             get {
-                object obj = ResourceManager.GetObject("знак_РЛС", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_с", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,19 +603,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_РЛСквадрат {
+        internal static System.Drawing.Bitmap знак_свои {
             get {
-                object obj = ResourceManager.GetObject("знак_РЛСквадрат", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap знак_РЭБ {
-            get {
-                object obj = ResourceManager.GetObject("знак_РЭБ", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_свои", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,9 +623,9 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap знак_танксклешней {
+        internal static System.Drawing.Bitmap знак_Т_кр {
             get {
-                object obj = ResourceManager.GetObject("знак_танксклешней", resourceCulture);
+                object obj = ResourceManager.GetObject("знак_Т_кр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

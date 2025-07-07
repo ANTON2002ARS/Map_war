@@ -55,24 +55,25 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapData.cs" />
     <Compile Include="Map_Marker.cs" />
     <Compile Include="Map_Text.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Save_Map.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,31 +89,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_4_мсд.png" />
+    <None Include="Resources\октябрьской_городок.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_3_мд.png" />
+    <None Include="Resources\ефремов.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_3тбр_кп.png" />
+    <None Include="Resources\ефремов1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_4_тд.png" />
+    <None Include="Resources\октябрьской_городок1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_42_тиоэск.png" />
+    <None Include="Resources\СВЕТЛОВ1.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_обркп_тпу.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\знак_Т.png" />
+    <None Include="Resources\3 мд.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_1_ак.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\знак_1_ак_кр.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\знак_1_тд.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_1_тд_кр.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_2_мд.png" />
@@ -121,76 +125,151 @@
     <None Include="Resources\знак_2_мд_кп.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\октябрьской_городок.jpg" />
+    <None Include="Resources\знак_2_мд_кп_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ефремов.jpg" />
+    <None Include="Resources\знак_2_мд_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_30ALKM.png" />
+    <None Include="Resources\знак_3_мд_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_50F16.png" />
+    <None Include="Resources\знак_3тбр_кп.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_52СМАКР.png" />
+    <None Include="Resources\знак_3тбр_кп_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_А10А.png" />
+    <None Include="Resources\знак_4_тд.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_баражирование.png" />
+    <None Include="Resources\знак_4_тд_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_вертолеты.png" />
+    <None Include="Resources\знак_42_тиоэск.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_голые вертолет.png" />
+    <None Include="Resources\знак_42_тиоэск_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_досигаемостьавиации.png" />
+    <None Include="Resources\знак_обркп_тпу.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_Е3А.png" />
+    <None Include="Resources\знак_обркп_тпу_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_курсированиетранспорта.png" />
+    <None Include="Resources\знак_Т.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_машинасбольшимиклешнями.png" />
+    <None Include="Resources\знак_Т_кр.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_направлениедвижениекружочковПВО.png" />
+    <None Include="Resources\4 мсд.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_ОБЛАСТЬСДВУМЯКРУЖОЧКАМИПВО.png" />
+    <None Include="Resources\знак_1_с.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_обрРЭБ.png" />
+    <None Include="Resources\знак_4_мсд.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_ПВО.png" />
+    <None Include="Resources\знак_4_мсд_.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_ПВО2.png" />
+    <None Include="Resources\знак_4_мсд_с.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_полувертолеты.png" />
+    <None Include="Resources\знак_4_мсд_сс.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_помехи.png" />
+    <None Include="Resources\знак_32_миг.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_РЛС.png" />
+    <None Include="Resources\знак_32_миг_с.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_РЛСквадрат.png" />
+    <None Include="Resources\знак_верт.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_РЭБ.png" />
+    <None Include="Resources\знак_верт_С.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\знак_танксклешней.png" />
+    <None Include="Resources\знак_вывод_истр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_вывод_истр_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_истр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_истр_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_зад_ближ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_зад_ближ_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_зад_дал.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_зад_дал_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_линия_арм.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_линия_арм_С.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_линия_див.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_линия_див_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_линия_корпусная.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_линия_корпусная_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_реп.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_рубеж.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_рубеж_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_свои.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_зона_ разведки_вц.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_исход_рубеж_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_исходный_рубеж.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_маневр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_рубеж_сн.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
