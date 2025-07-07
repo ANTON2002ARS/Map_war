@@ -33,6 +33,11 @@ namespace Map_war
                 {
                     string json = File.ReadAllText(ofd.FileName);
                     List<Map_Marker> markers = JsonConvert.DeserializeObject<List<Map_Marker>>(json);
+                    // Восстановление изображений
+                    foreach (var marker in markers)
+                    {
+                        marker.RestoreImage();
+                    }
                     return markers;
                 }
                 catch

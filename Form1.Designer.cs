@@ -42,6 +42,13 @@ namespace Map_war
             this.picture_map = new System.Windows.Forms.PictureBox();
             this.panel_map = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_RAEB = new System.Windows.Forms.Button();
+            this.button_OU = new System.Windows.Forms.Button();
+            this.button_POU = new System.Windows.Forms.Button();
+            this.button_interfer = new System.Windows.Forms.Button();
+            this.button_VOP = new System.Windows.Forms.Button();
+            this.button_time_PVO = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.button_back_PVO = new System.Windows.Forms.Button();
             this.button_RAB = new System.Windows.Forms.Button();
             this.button_Fare = new System.Windows.Forms.Button();
@@ -56,13 +63,6 @@ namespace Map_war
             this.button_52СМАКР = new System.Windows.Forms.Button();
             this.button_50F16 = new System.Windows.Forms.Button();
             this.button_30ALKM = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button_time_PVO = new System.Windows.Forms.Button();
-            this.button_VOP = new System.Windows.Forms.Button();
-            this.button_interfer = new System.Windows.Forms.Button();
-            this.button_POU = new System.Windows.Forms.Button();
-            this.button_OU = new System.Windows.Forms.Button();
-            this.button_RAEB = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.group_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_map)).BeginInit();
@@ -191,7 +191,6 @@ namespace Map_war
             this.picture_map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.picture_map.TabIndex = 0;
             this.picture_map.TabStop = false;
-            this.picture_map.Click += new System.EventHandler(this.picture_map_Click);
             this.picture_map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.picture_map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
@@ -239,194 +238,16 @@ namespace Map_war
             this.panel1.Size = new System.Drawing.Size(167, 534);
             this.panel1.TabIndex = 10;
             // 
-            // button_back_PVO
+            // button_RAEB
             // 
-            this.button_back_PVO.Location = new System.Drawing.Point(7, 396);
-            this.button_back_PVO.Margin = new System.Windows.Forms.Padding(0);
-            this.button_back_PVO.Name = "button_back_PVO";
-            this.button_back_PVO.Size = new System.Drawing.Size(133, 23);
-            this.button_back_PVO.TabIndex = 27;
-            this.button_back_PVO.Text = "поз. запаснаяПВО";
-            this.button_back_PVO.UseVisualStyleBackColor = true;
-            // 
-            // button_RAB
-            // 
-            this.button_RAB.Location = new System.Drawing.Point(7, 367);
-            this.button_RAB.Margin = new System.Windows.Forms.Padding(0);
-            this.button_RAB.Name = "button_RAB";
-            this.button_RAB.Size = new System.Drawing.Size(133, 23);
-            this.button_RAB.TabIndex = 26;
-            this.button_RAB.Text = "ОбрРЭБ";
-            this.button_RAB.UseVisualStyleBackColor = true;
-            // 
-            // button_Fare
-            // 
-            this.button_Fare.Location = new System.Drawing.Point(7, 338);
-            this.button_Fare.Margin = new System.Windows.Forms.Padding(0);
-            this.button_Fare.Name = "button_Fare";
-            this.button_Fare.Size = new System.Drawing.Size(133, 23);
-            this.button_Fare.TabIndex = 25;
-            this.button_Fare.Text = "Рубеж огня";
-            this.button_Fare.UseVisualStyleBackColor = true;
-            // 
-            // button_ABM
-            // 
-            this.button_ABM.Location = new System.Drawing.Point(7, 309);
-            this.button_ABM.Margin = new System.Windows.Forms.Padding(0);
-            this.button_ABM.Name = "button_ABM";
-            this.button_ABM.Size = new System.Drawing.Size(133, 23);
-            this.button_ABM.TabIndex = 24;
-            this.button_ABM.Text = "АБМ в засаде";
-            this.button_ABM.UseVisualStyleBackColor = true;
-            // 
-            // button_Running_transport
-            // 
-            this.button_Running_transport.Location = new System.Drawing.Point(7, 280);
-            this.button_Running_transport.Margin = new System.Windows.Forms.Padding(0);
-            this.button_Running_transport.Name = "button_Running_transport";
-            this.button_Running_transport.Size = new System.Drawing.Size(133, 23);
-            this.button_Running_transport.TabIndex = 23;
-            this.button_Running_transport.Text = "Кочующая БМ";
-            this.button_Running_transport.UseVisualStyleBackColor = true;
-            // 
-            // button_EZA
-            // 
-            this.button_EZA.Location = new System.Drawing.Point(7, 251);
-            this.button_EZA.Margin = new System.Windows.Forms.Padding(0);
-            this.button_EZA.Name = "button_EZA";
-            this.button_EZA.Size = new System.Drawing.Size(133, 23);
-            this.button_EZA.TabIndex = 22;
-            this.button_EZA.Text = "Е3А";
-            this.button_EZA.UseVisualStyleBackColor = true;
-            // 
-            // button_reach_of_aviation
-            // 
-            this.button_reach_of_aviation.Location = new System.Drawing.Point(7, 222);
-            this.button_reach_of_aviation.Margin = new System.Windows.Forms.Padding(0);
-            this.button_reach_of_aviation.Name = "button_reach_of_aviation";
-            this.button_reach_of_aviation.Size = new System.Drawing.Size(133, 23);
-            this.button_reach_of_aviation.TabIndex = 21;
-            this.button_reach_of_aviation.Text = "Досигаемость авиации";
-            this.button_reach_of_aviation.UseVisualStyleBackColor = true;
-            // 
-            // button_move
-            // 
-            this.button_move.Location = new System.Drawing.Point(7, 135);
-            this.button_move.Margin = new System.Windows.Forms.Padding(0);
-            this.button_move.Name = "button_move";
-            this.button_move.Size = new System.Drawing.Size(133, 23);
-            this.button_move.TabIndex = 19;
-            this.button_move.Text = "Баражирование";
-            this.button_move.UseVisualStyleBackColor = true;
-            // 
-            // button_Helicopters
-            // 
-            this.button_Helicopters.Location = new System.Drawing.Point(7, 164);
-            this.button_Helicopters.Margin = new System.Windows.Forms.Padding(0);
-            this.button_Helicopters.Name = "button_Helicopters";
-            this.button_Helicopters.Size = new System.Drawing.Size(133, 23);
-            this.button_Helicopters.TabIndex = 20;
-            this.button_Helicopters.Text = "Вертолеты";
-            this.button_Helicopters.UseVisualStyleBackColor = true;
-            // 
-            // button_W_Helicopters
-            // 
-            this.button_W_Helicopters.Location = new System.Drawing.Point(7, 193);
-            this.button_W_Helicopters.Margin = new System.Windows.Forms.Padding(0);
-            this.button_W_Helicopters.Name = "button_W_Helicopters";
-            this.button_W_Helicopters.Size = new System.Drawing.Size(133, 23);
-            this.button_W_Helicopters.TabIndex = 18;
-            this.button_W_Helicopters.Text = "Голые вертолеты";
-            this.button_W_Helicopters.UseVisualStyleBackColor = true;
-            // 
-            // button_А10А
-            // 
-            this.button_А10А.Location = new System.Drawing.Point(7, 106);
-            this.button_А10А.Margin = new System.Windows.Forms.Padding(0);
-            this.button_А10А.Name = "button_А10А";
-            this.button_А10А.Size = new System.Drawing.Size(133, 23);
-            this.button_А10А.TabIndex = 17;
-            this.button_А10А.Text = "А10А";
-            this.button_А10А.UseVisualStyleBackColor = true;
-            // 
-            // button_52СМАКР
-            // 
-            this.button_52СМАКР.Location = new System.Drawing.Point(7, 77);
-            this.button_52СМАКР.Margin = new System.Windows.Forms.Padding(0);
-            this.button_52СМАКР.Name = "button_52СМАКР";
-            this.button_52СМАКР.Size = new System.Drawing.Size(133, 23);
-            this.button_52СМАКР.TabIndex = 16;
-            this.button_52СМАКР.Text = "52СМАКР";
-            this.button_52СМАКР.UseVisualStyleBackColor = true;
-            // 
-            // button_50F16
-            // 
-            this.button_50F16.Location = new System.Drawing.Point(7, 48);
-            this.button_50F16.Margin = new System.Windows.Forms.Padding(0);
-            this.button_50F16.Name = "button_50F16";
-            this.button_50F16.Size = new System.Drawing.Size(133, 23);
-            this.button_50F16.TabIndex = 15;
-            this.button_50F16.Text = "50F16";
-            this.button_50F16.UseVisualStyleBackColor = true;
-            // 
-            // button_30ALKM
-            // 
-            this.button_30ALKM.Location = new System.Drawing.Point(7, 19);
-            this.button_30ALKM.Margin = new System.Windows.Forms.Padding(0);
-            this.button_30ALKM.Name = "button_30ALKM";
-            this.button_30ALKM.Size = new System.Drawing.Size(133, 23);
-            this.button_30ALKM.TabIndex = 14;
-            this.button_30ALKM.Text = "30ALKM";
-            this.button_30ALKM.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 13);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Обозначение противника";
-            // 
-            // button_time_PVO
-            // 
-            this.button_time_PVO.Location = new System.Drawing.Point(7, 425);
-            this.button_time_PVO.Margin = new System.Windows.Forms.Padding(0);
-            this.button_time_PVO.Name = "button_time_PVO";
-            this.button_time_PVO.Size = new System.Drawing.Size(133, 23);
-            this.button_time_PVO.TabIndex = 29;
-            this.button_time_PVO.Text = "поз. вр. ПВО";
-            this.button_time_PVO.UseVisualStyleBackColor = true;
-            // 
-            // button_VOP
-            // 
-            this.button_VOP.Location = new System.Drawing.Point(7, 454);
-            this.button_VOP.Margin = new System.Windows.Forms.Padding(0);
-            this.button_VOP.Name = "button_VOP";
-            this.button_VOP.Size = new System.Drawing.Size(133, 23);
-            this.button_VOP.TabIndex = 30;
-            this.button_VOP.Text = "ВОП";
-            this.button_VOP.UseVisualStyleBackColor = true;
-            // 
-            // button_interfer
-            // 
-            this.button_interfer.Location = new System.Drawing.Point(7, 483);
-            this.button_interfer.Margin = new System.Windows.Forms.Padding(0);
-            this.button_interfer.Name = "button_interfer";
-            this.button_interfer.Size = new System.Drawing.Size(133, 23);
-            this.button_interfer.TabIndex = 31;
-            this.button_interfer.Text = "Постановка помех";
-            this.button_interfer.UseVisualStyleBackColor = true;
-            // 
-            // button_POU
-            // 
-            this.button_POU.Location = new System.Drawing.Point(6, 512);
-            this.button_POU.Margin = new System.Windows.Forms.Padding(0);
-            this.button_POU.Name = "button_POU";
-            this.button_POU.Size = new System.Drawing.Size(133, 23);
-            this.button_POU.TabIndex = 32;
-            this.button_POU.Text = "ПОУ";
-            this.button_POU.UseVisualStyleBackColor = true;
+            this.button_RAEB.Location = new System.Drawing.Point(7, 570);
+            this.button_RAEB.Margin = new System.Windows.Forms.Padding(0);
+            this.button_RAEB.Name = "button_RAEB";
+            this.button_RAEB.Size = new System.Drawing.Size(133, 23);
+            this.button_RAEB.TabIndex = 34;
+            this.button_RAEB.Text = "РЭБ";
+            this.button_RAEB.UseVisualStyleBackColor = true;
+            this.button_RAEB.Click += new System.EventHandler(this.button_RAEB_Click);
             // 
             // button_OU
             // 
@@ -437,16 +258,214 @@ namespace Map_war
             this.button_OU.TabIndex = 33;
             this.button_OU.Text = "ЦОУ";
             this.button_OU.UseVisualStyleBackColor = true;
+            this.button_OU.Click += new System.EventHandler(this.button_OU_Click);
             // 
-            // button_RAEB
+            // button_POU
             // 
-            this.button_RAEB.Location = new System.Drawing.Point(7, 570);
-            this.button_RAEB.Margin = new System.Windows.Forms.Padding(0);
-            this.button_RAEB.Name = "button_RAEB";
-            this.button_RAEB.Size = new System.Drawing.Size(133, 23);
-            this.button_RAEB.TabIndex = 34;
-            this.button_RAEB.Text = "РЭБ";
-            this.button_RAEB.UseVisualStyleBackColor = true;
+            this.button_POU.Location = new System.Drawing.Point(6, 512);
+            this.button_POU.Margin = new System.Windows.Forms.Padding(0);
+            this.button_POU.Name = "button_POU";
+            this.button_POU.Size = new System.Drawing.Size(133, 23);
+            this.button_POU.TabIndex = 32;
+            this.button_POU.Text = "ПОУ";
+            this.button_POU.UseVisualStyleBackColor = true;
+            this.button_POU.Click += new System.EventHandler(this.button_POU_Click);
+            // 
+            // button_interfer
+            // 
+            this.button_interfer.Location = new System.Drawing.Point(7, 483);
+            this.button_interfer.Margin = new System.Windows.Forms.Padding(0);
+            this.button_interfer.Name = "button_interfer";
+            this.button_interfer.Size = new System.Drawing.Size(133, 23);
+            this.button_interfer.TabIndex = 31;
+            this.button_interfer.Text = "Постановка помех";
+            this.button_interfer.UseVisualStyleBackColor = true;
+            this.button_interfer.Click += new System.EventHandler(this.button_interfer_Click);
+            // 
+            // button_VOP
+            // 
+            this.button_VOP.Location = new System.Drawing.Point(7, 454);
+            this.button_VOP.Margin = new System.Windows.Forms.Padding(0);
+            this.button_VOP.Name = "button_VOP";
+            this.button_VOP.Size = new System.Drawing.Size(133, 23);
+            this.button_VOP.TabIndex = 30;
+            this.button_VOP.Text = "ВОП";
+            this.button_VOP.UseVisualStyleBackColor = true;
+            this.button_VOP.Click += new System.EventHandler(this.button_VOP_Click);
+            // 
+            // button_time_PVO
+            // 
+            this.button_time_PVO.Location = new System.Drawing.Point(7, 425);
+            this.button_time_PVO.Margin = new System.Windows.Forms.Padding(0);
+            this.button_time_PVO.Name = "button_time_PVO";
+            this.button_time_PVO.Size = new System.Drawing.Size(133, 23);
+            this.button_time_PVO.TabIndex = 29;
+            this.button_time_PVO.Text = "поз. вр. ПВО";
+            this.button_time_PVO.UseVisualStyleBackColor = true;
+            this.button_time_PVO.Click += new System.EventHandler(this.button_time_PVO_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Обозначение противника";
+            // 
+            // button_back_PVO
+            // 
+            this.button_back_PVO.Location = new System.Drawing.Point(7, 396);
+            this.button_back_PVO.Margin = new System.Windows.Forms.Padding(0);
+            this.button_back_PVO.Name = "button_back_PVO";
+            this.button_back_PVO.Size = new System.Drawing.Size(133, 23);
+            this.button_back_PVO.TabIndex = 27;
+            this.button_back_PVO.Text = "поз. запаснаяПВО";
+            this.button_back_PVO.UseVisualStyleBackColor = true;
+            this.button_back_PVO.Click += new System.EventHandler(this.button_back_PVO_Click);
+            // 
+            // button_RAB
+            // 
+            this.button_RAB.Location = new System.Drawing.Point(7, 367);
+            this.button_RAB.Margin = new System.Windows.Forms.Padding(0);
+            this.button_RAB.Name = "button_RAB";
+            this.button_RAB.Size = new System.Drawing.Size(133, 23);
+            this.button_RAB.TabIndex = 26;
+            this.button_RAB.Text = "ОбрРЭБ";
+            this.button_RAB.UseVisualStyleBackColor = true;
+            this.button_RAB.Click += new System.EventHandler(this.button_RAB_Click);
+            // 
+            // button_Fare
+            // 
+            this.button_Fare.Location = new System.Drawing.Point(7, 338);
+            this.button_Fare.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Fare.Name = "button_Fare";
+            this.button_Fare.Size = new System.Drawing.Size(133, 23);
+            this.button_Fare.TabIndex = 25;
+            this.button_Fare.Text = "Рубеж огня";
+            this.button_Fare.UseVisualStyleBackColor = true;
+            this.button_Fare.Click += new System.EventHandler(this.button_Fare_Click);
+            // 
+            // button_ABM
+            // 
+            this.button_ABM.Location = new System.Drawing.Point(7, 309);
+            this.button_ABM.Margin = new System.Windows.Forms.Padding(0);
+            this.button_ABM.Name = "button_ABM";
+            this.button_ABM.Size = new System.Drawing.Size(133, 23);
+            this.button_ABM.TabIndex = 24;
+            this.button_ABM.Text = "АБМ в засаде";
+            this.button_ABM.UseVisualStyleBackColor = true;
+            this.button_ABM.Click += new System.EventHandler(this.button_ABM_Click);
+            // 
+            // button_Running_transport
+            // 
+            this.button_Running_transport.Location = new System.Drawing.Point(7, 280);
+            this.button_Running_transport.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Running_transport.Name = "button_Running_transport";
+            this.button_Running_transport.Size = new System.Drawing.Size(133, 23);
+            this.button_Running_transport.TabIndex = 23;
+            this.button_Running_transport.Text = "Кочующая БМ";
+            this.button_Running_transport.UseVisualStyleBackColor = true;
+            this.button_Running_transport.Click += new System.EventHandler(this.button_Running_transport_Click);
+            // 
+            // button_EZA
+            // 
+            this.button_EZA.Location = new System.Drawing.Point(7, 251);
+            this.button_EZA.Margin = new System.Windows.Forms.Padding(0);
+            this.button_EZA.Name = "button_EZA";
+            this.button_EZA.Size = new System.Drawing.Size(133, 23);
+            this.button_EZA.TabIndex = 22;
+            this.button_EZA.Text = "Е3А";
+            this.button_EZA.UseVisualStyleBackColor = true;
+            this.button_EZA.Click += new System.EventHandler(this.button_EZA_Click);
+            // 
+            // button_reach_of_aviation
+            // 
+            this.button_reach_of_aviation.Location = new System.Drawing.Point(7, 222);
+            this.button_reach_of_aviation.Margin = new System.Windows.Forms.Padding(0);
+            this.button_reach_of_aviation.Name = "button_reach_of_aviation";
+            this.button_reach_of_aviation.Size = new System.Drawing.Size(133, 23);
+            this.button_reach_of_aviation.TabIndex = 21;
+            this.button_reach_of_aviation.Text = "Досигаемость авиации";
+            this.button_reach_of_aviation.UseVisualStyleBackColor = true;
+            this.button_reach_of_aviation.Click += new System.EventHandler(this.button_reach_of_aviation_Click);
+            // 
+            // button_move
+            // 
+            this.button_move.Location = new System.Drawing.Point(7, 135);
+            this.button_move.Margin = new System.Windows.Forms.Padding(0);
+            this.button_move.Name = "button_move";
+            this.button_move.Size = new System.Drawing.Size(133, 23);
+            this.button_move.TabIndex = 19;
+            this.button_move.Text = "Баражирование";
+            this.button_move.UseVisualStyleBackColor = true;
+            this.button_move.Click += new System.EventHandler(this.button_move_Click);
+            // 
+            // button_Helicopters
+            // 
+            this.button_Helicopters.Location = new System.Drawing.Point(7, 164);
+            this.button_Helicopters.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Helicopters.Name = "button_Helicopters";
+            this.button_Helicopters.Size = new System.Drawing.Size(133, 23);
+            this.button_Helicopters.TabIndex = 20;
+            this.button_Helicopters.Text = "Вертолеты";
+            this.button_Helicopters.UseVisualStyleBackColor = true;
+            this.button_Helicopters.Click += new System.EventHandler(this.button_Helicopters_Click);
+            // 
+            // button_W_Helicopters
+            // 
+            this.button_W_Helicopters.Location = new System.Drawing.Point(7, 193);
+            this.button_W_Helicopters.Margin = new System.Windows.Forms.Padding(0);
+            this.button_W_Helicopters.Name = "button_W_Helicopters";
+            this.button_W_Helicopters.Size = new System.Drawing.Size(133, 23);
+            this.button_W_Helicopters.TabIndex = 18;
+            this.button_W_Helicopters.Text = "Голые вертолеты";
+            this.button_W_Helicopters.UseVisualStyleBackColor = true;
+            this.button_W_Helicopters.Click += new System.EventHandler(this.button_W_Helicopters_Click);
+            // 
+            // button_А10А
+            // 
+            this.button_А10А.Location = new System.Drawing.Point(7, 106);
+            this.button_А10А.Margin = new System.Windows.Forms.Padding(0);
+            this.button_А10А.Name = "button_А10А";
+            this.button_А10А.Size = new System.Drawing.Size(133, 23);
+            this.button_А10А.TabIndex = 17;
+            this.button_А10А.Text = "А10А";
+            this.button_А10А.UseVisualStyleBackColor = true;
+            this.button_А10А.Click += new System.EventHandler(this.button_А10А_Click);
+            // 
+            // button_52СМАКР
+            // 
+            this.button_52СМАКР.Location = new System.Drawing.Point(7, 77);
+            this.button_52СМАКР.Margin = new System.Windows.Forms.Padding(0);
+            this.button_52СМАКР.Name = "button_52СМАКР";
+            this.button_52СМАКР.Size = new System.Drawing.Size(133, 23);
+            this.button_52СМАКР.TabIndex = 16;
+            this.button_52СМАКР.Text = "52СМАКР";
+            this.button_52СМАКР.UseVisualStyleBackColor = true;
+            this.button_52СМАКР.Click += new System.EventHandler(this.button_52СМАКР_Click);
+            // 
+            // button_50F16
+            // 
+            this.button_50F16.Location = new System.Drawing.Point(7, 48);
+            this.button_50F16.Margin = new System.Windows.Forms.Padding(0);
+            this.button_50F16.Name = "button_50F16";
+            this.button_50F16.Size = new System.Drawing.Size(133, 23);
+            this.button_50F16.TabIndex = 15;
+            this.button_50F16.Text = "50F16";
+            this.button_50F16.UseVisualStyleBackColor = true;
+            this.button_50F16.Click += new System.EventHandler(this.button_50F16_Click);
+            // 
+            // button_30ALKM
+            // 
+            this.button_30ALKM.Location = new System.Drawing.Point(7, 19);
+            this.button_30ALKM.Margin = new System.Windows.Forms.Padding(0);
+            this.button_30ALKM.Name = "button_30ALKM";
+            this.button_30ALKM.Size = new System.Drawing.Size(133, 23);
+            this.button_30ALKM.TabIndex = 14;
+            this.button_30ALKM.Text = "30ALKM";
+            this.button_30ALKM.UseVisualStyleBackColor = true;
+            this.button_30ALKM.Click += new System.EventHandler(this.button_30ALKM_Click);
             // 
             // Form1
             // 
