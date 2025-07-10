@@ -104,24 +104,6 @@
     <None Include="Resources\СВЕТЛОВ1.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\3 мд.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\знак_1_ак.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\знак_1_ак_кр.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\знак_1_тд.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\знак_1_тд_кр.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\знак_2_мд.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\знак_2_мд_кп.png" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_2_мд_кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_3_мд.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_3_мд_кр.png" />
@@ -162,6 +147,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_Т_кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3 мд.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_1_ак.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_1_ак_кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_1_тд.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_1_тд_кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\знак_2_мд.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\4 мсд.png" />
@@ -204,6 +207,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_истр_с.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\маршруты полетов самолетов - разведчиков систем ВТО кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\маршруты полетов самолетов - разведчиков систем ВТО син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\направление налета кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\направление налета син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\обрРЭБ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\станции комплпекс помех красн.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\станции комплпекс помех син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\центр управления и оповещения кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\центр управления и оповещения син.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_1.png" />
@@ -257,6 +287,27 @@
     <None Include="Resources\знак_свои.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\БМ в засаде.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\зона поражения.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\кочующая БМ %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\кочующая БМ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\отвественный сектор.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\стартовые позиции временная.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\стартовые позиции запасная.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\знак_зона_ разведки_вц.png" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +321,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\знак_рубеж_сн.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\позиционный район дивизиона зрбр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Позиционный район здн мсп.кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\позиционный район здн мсп.син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\РЛПразвернутый на позиции.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\РЛПскрытого резерыва.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\авиационные удары одиночные син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\засада кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\засада син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\зона дежурства в воздухе кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\зона дежурства в воздухе син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\площадка базирования вертолетов кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\площадка базирования вертолетов син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\посадочная площадка АА кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\посадочная площадка АА син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\пост управления и оповещения кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\пост управления и оповещения син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\район базирования вертолетной части кр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\район базирования вертолетной части син.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\обрРЭБ кр.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

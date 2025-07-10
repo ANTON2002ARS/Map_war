@@ -83,9 +83,49 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap авиационные_удары_одиночные_син {
+            get {
+                object obj = ResourceManager.GetObject("авиационные_удары_одиночные_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap БМ_в_засаде {
+            get {
+                object obj = ResourceManager.GetObject("БМ_в_засаде", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ефремов {
             get {
                 object obj = ResourceManager.GetObject("ефремов", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap засада_кр {
+            get {
+                object obj = ResourceManager.GetObject("засада_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap засада_син {
+            get {
+                object obj = ResourceManager.GetObject("засада_син", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +236,16 @@ namespace Map_war.Properties {
         internal static System.Drawing.Bitmap знак_2_мд_кр {
             get {
                 object obj = ResourceManager.GetObject("знак_2_мд_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap знак_3_мд {
+            get {
+                object obj = ResourceManager.GetObject("знак_3_мд", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -633,6 +683,116 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap зона_дежурства_в_воздухе_кр {
+            get {
+                object obj = ResourceManager.GetObject("зона_дежурства_в_воздухе_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap зона_дежурства_в_воздухе_син {
+            get {
+                object obj = ResourceManager.GetObject("зона_дежурства_в_воздухе_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap зона_поражения {
+            get {
+                object obj = ResourceManager.GetObject("зона_поражения", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap кочующая_БМ {
+            get {
+                object obj = ResourceManager.GetObject("кочующая_БМ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap кочующая_БМ__2_ {
+            get {
+                object obj = ResourceManager.GetObject("кочующая_БМ__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap маршруты_полетов_самолетов___разведчиков_систем_ВТО_кр {
+            get {
+                object obj = ResourceManager.GetObject("маршруты_полетов_самолетов___разведчиков_систем_ВТО_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap маршруты_полетов_самолетов___разведчиков_систем_ВТО_син {
+            get {
+                object obj = ResourceManager.GetObject("маршруты_полетов_самолетов___разведчиков_систем_ВТО_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap направление_налета_кр {
+            get {
+                object obj = ResourceManager.GetObject("направление_налета_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap направление_налета_син {
+            get {
+                object obj = ResourceManager.GetObject("направление_налета_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap обрРЭБ {
+            get {
+                object obj = ResourceManager.GetObject("обрРЭБ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap обрРЭБ_кр {
+            get {
+                object obj = ResourceManager.GetObject("обрРЭБ_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap октябрьской_городок {
             get {
                 object obj = ResourceManager.GetObject("октябрьской_городок", resourceCulture);
@@ -643,9 +803,209 @@ namespace Map_war.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap отвественный_сектор {
+            get {
+                object obj = ResourceManager.GetObject("отвественный_сектор", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap площадка_базирования_вертолетов_кр {
+            get {
+                object obj = ResourceManager.GetObject("площадка_базирования_вертолетов_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap площадка_базирования_вертолетов_син {
+            get {
+                object obj = ResourceManager.GetObject("площадка_базирования_вертолетов_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap позиционный_район_дивизиона_зрбр {
+            get {
+                object obj = ResourceManager.GetObject("позиционный_район_дивизиона_зрбр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Позиционный_район_здн_мсп_кр {
+            get {
+                object obj = ResourceManager.GetObject("Позиционный_район_здн_мсп_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap позиционный_район_здн_мсп_син {
+            get {
+                object obj = ResourceManager.GetObject("позиционный_район_здн_мсп_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap посадочная_площадка_АА_кр {
+            get {
+                object obj = ResourceManager.GetObject("посадочная_площадка_АА_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap посадочная_площадка_АА_син {
+            get {
+                object obj = ResourceManager.GetObject("посадочная_площадка_АА_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap пост_управления_и_оповещения_кр {
+            get {
+                object obj = ResourceManager.GetObject("пост_управления_и_оповещения_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap пост_управления_и_оповещения_син {
+            get {
+                object obj = ResourceManager.GetObject("пост_управления_и_оповещения_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap район_базирования_вертолетной_части_кр {
+            get {
+                object obj = ResourceManager.GetObject("район_базирования_вертолетной_части_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap район_базирования_вертолетной_части_син {
+            get {
+                object obj = ResourceManager.GetObject("район_базирования_вертолетной_части_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap РЛПразвернутый_на_позиции {
+            get {
+                object obj = ResourceManager.GetObject("РЛПразвернутый_на_позиции", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap РЛПскрытого_резерыва {
+            get {
+                object obj = ResourceManager.GetObject("РЛПскрытого_резерыва", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap СВЕТЛОВ {
             get {
                 object obj = ResourceManager.GetObject("СВЕТЛОВ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap станции_комплпекс_помех_красн {
+            get {
+                object obj = ResourceManager.GetObject("станции_комплпекс_помех_красн", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap станции_комплпекс_помех_син {
+            get {
+                object obj = ResourceManager.GetObject("станции_комплпекс_помех_син", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap стартовые_позиции_временная {
+            get {
+                object obj = ResourceManager.GetObject("стартовые_позиции_временная", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap стартовые_позиции_запасная {
+            get {
+                object obj = ResourceManager.GetObject("стартовые_позиции_запасная", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap центр_управления_и_оповещения_кр {
+            get {
+                object obj = ResourceManager.GetObject("центр_управления_и_оповещения_кр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap центр_управления_и_оповещения_син {
+            get {
+                object obj = ResourceManager.GetObject("центр_управления_и_оповещения_син", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
