@@ -8,7 +8,7 @@ namespace Map_war
     
     public class Save_Map
     {
-        private Dictionary<string, string> name_znak_own = new Dictionary<string, string>
+        public static Dictionary<string, string> name_znak_own = new Dictionary<string, string>
         {
             {"Направление наступление сил","знак_3_мд" },
             {"Направление наступление танковых сил","знак_1_тд_кр" },
@@ -73,7 +73,7 @@ namespace Map_war
             {"Район засады","засада кр" },         
         };
 
-        private Dictionary<string, string> name_znak_protivnik = new Dictionary<string, string>
+        public static Dictionary<string, string> name_znak_protivnik = new Dictionary<string, string>
         {
             {"Направление наступление сил","знак_3_мд" },
             {"Направление наступление танковых сил","знак_1_тд" },

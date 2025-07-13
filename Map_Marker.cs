@@ -6,22 +6,21 @@ namespace Map_war
 {
     public class Map_Marker
     {
-        public string Resource_Map;
+        //public string Resource_Map;
         public string ResourceName { get; set; }   // Имя ресурса
+        public string Name_Znak { get; set; }       // Название знака
         public float Pos_X { get; set; }            // Координата X
         public float Pos_Y { get; set; }            // Координата Y        
 
         public Image Get_ZNAK()
         {
             // Получаем изображение из ресурсов по имени
-            return (Image)Properties.Resources.ResourceManager.GetObject(ResourceName);
-            
+            return (Image)Properties.Resources.ResourceManager.GetObject(ResourceName);            
         }
-
-        public Image Get_Map()
+        public static Image Get_Image(string resourcename)
         {
-            return (Image)Properties.Resources.ResourceManager.GetObject(Resource_Map);
-        }
+            return (Image)Properties.Resources.ResourceManager.GetObject(resourcename);
+        }        
 
         public static Image RotateImage(Image img, float angle)
         {

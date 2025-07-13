@@ -11,14 +11,18 @@ using System.Windows.Forms;
 namespace Map_war
 {
     public partial class Form1 : Form
-    {        
+    {
+        private string use_map;
+        private bool use_text;
         private string str_set;
         // Глобальные переменные формы
         float zoom = 0.5f; // коэффициент масштабирования
         Point mouseDownPosition; // точка нажатия мыши
         Point scrollPositionOnMouseDown; // положение скролла в момент нажатия
         private MapData currentMapData = new MapData();
+        // выбраное изображение
         private string ResourceName;
+        private string name_znak;
         Image overlayImage;      // изображение, которое будем рисовать по клику        
         
 
@@ -63,9 +67,12 @@ namespace Map_war
             marker.Pos_X = imageX;
             marker.Pos_Y = imageY;
             marker.ResourceName = this.ResourceName;
+            marker.Name_Znak = name_znak;
             currentMapData.Markers.Add(marker);
-            overlayImage = null;
-            this.ResourceName = null;
+            if (marker.Name_Znak == null) return;
+            comboBox_Delete_Znak.Items.Add(marker.Name_Znak);
+            /*overlayImage = null;
+            this.ResourceName = null;*/
             Console.WriteLine("Установка знака:" + marker.Pos_X + " " + marker.Pos_Y);
         }
 
@@ -87,48 +94,7 @@ namespace Map_war
             }
         }       
 
-        private void Open_Znak(Image znak, string resourcename)
-        {
-            overlayImage = znak;
-            this.ResourceName = resourcename;
-            if(radioButton_0.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 0);
-            }
-            else if(radioButton_45.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 45);
-            }
-            else if (radioButton_90.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 90);
-            }
-            else if (radioButton_135.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 135);
-            }
-            else if(radioButton_180.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 180);
-            }
-            else if(radioButton_225.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 225);
-            }
-            else if (radioButton_270.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 270);
-            }
-            else if (radioButton_315.Checked == true)
-            {
-                overlayImage = Map_Marker.RotateImage(znak, 315);
-            }
-            picture_test.Image = overlayImage;
-        }
-
-
-
-
+        
         private void Draw_Image(float X, float Y, Image image)
         {
             // Масштаб для overlayImage
@@ -189,7 +155,7 @@ namespace Map_war
         private void Span_TEXT(MouseEventArgs e)
         {
             if (str_set == "")
-                return;            
+                return; 
             button_text.BackColor = Color.White;
 
             Point imagePoint = TranslateZoomMousePosition(e.Location);
@@ -199,8 +165,9 @@ namespace Map_war
             map_text.Position = imagePoint;
             map_text.Text_map = str_set;    
             currentMapData.Texts.Add(map_text);
+            comboBox_Del_Text.Items.Add(str_set);
 
-            str_set = text_input.Text = "";
+            //str_set = text_input.Text = "";
         }
 
 
@@ -226,8 +193,25 @@ namespace Map_war
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            overlayImage = Properties.Resources.знак_Т;
+            currentMapData.Map = "октябрьской_городок";
+            picture_map.Image = currentMapData.Get_Map();
+            //overlayImage = Properties.Resources.знак_Т;
             panel_map.MouseWheel += panel1_MouseWheel;
+            Add_Dictionary();
+        }
+
+        private void Add_Dictionary()
+        {
+            comboBox_protivnik.Items.Clear();
+            foreach (var key in Save_Map.name_znak_protivnik.Keys)
+            {
+                comboBox_protivnik.Items.Add(key);
+            }
+            comboBox_own.Items.Clear();
+            foreach (var key in Save_Map.name_znak_own.Keys)
+            {
+                comboBox_own.Items.Add(key);
+            }
 
         }
         private void panel1_MouseWheel(object sender, MouseEventArgs e)
@@ -274,7 +258,7 @@ namespace Map_war
             }
             else if (e.Button == MouseButtons.Left)
             {
-                if(str_set != "")
+                if(use_text == true)
                 {
                     Span_TEXT(e);
                 }
@@ -298,6 +282,8 @@ namespace Map_war
         private void button_text_Click(object sender, EventArgs e)
         {
             str_set = text_input.Text;
+            use_text = true;
+            picture_test.Image = null;
             button_text.BackColor = Color.Green;
         }
 
@@ -334,9 +320,12 @@ namespace Map_war
                     string path = openFileDialog.FileName;
                     Save_Map save = new Save_Map();
                     currentMapData = save.LoadMapDataFromFile(path);
-
-                    // Обновите интерфейс, например:
-
+                    picture_map.Image = currentMapData.Get_Map();
+                    if(picture_map.Image == null)
+                    {
+                        MessageBox.Show("Нет доступной карты!");
+                        return;
+                    }
                     UpdateMarkersUI(currentMapData.Markers);
                     UpdateTextsUI(currentMapData.Texts);
                 }
@@ -388,7 +377,6 @@ namespace Map_war
             {
                 picture_map.Image = Properties.Resources.ефремов;
                 currentMapData.Clear_Data();
-
             }
         }    
 
@@ -397,6 +385,67 @@ namespace Map_war
         {
             overlayImage = Properties.Resources.знак_верт;
             this.ResourceName = "знак_верт";
+        }
+        
+        // выбор знака
+        private void button_set_protivnik_Click(object sender, EventArgs e)
+        {
+            button_set_protivnik.BackColor = Color.Blue;
+            button_set_own.BackColor = Color.White;
+            string selected = comboBox_protivnik.SelectedItem?.ToString();
+            if (selected == null) return;
+            name_znak = selected;
+            Selected_Znak(Save_Map.name_znak_protivnik[selected]);
+        }
+
+        private void button_set_own_Click(object sender, EventArgs e)
+        {
+            button_set_own.BackColor = Color.Red;
+            button_set_protivnik.BackColor = Color.White;
+            string selected = comboBox_own.SelectedItem?.ToString();
+            if (selected == null) return;
+            name_znak = selected;
+            Selected_Znak(Save_Map.name_znak_own[selected]);
+        }
+
+        private void Selected_Znak(string resource_name)
+        {
+            if (resource_name == null) return;
+            ResourceName = resource_name;
+            Image image = Map_Marker.Get_Image(resource_name);
+            int angle = (int)numericUpDown_angle.Value;
+            overlayImage = Map_Marker.RotateImage(image, angle);
+            picture_test.Image = overlayImage;
+            use_text = false;
+        }
+
+        private void numericUpDown_angle_ValueChanged(object sender, EventArgs e)
+        {
+            Selected_Znak(ResourceName);
+        }
+
+        private void button_del_znak_Click(object sender, EventArgs e)
+        {
+            string selected = comboBox_Delete_Znak.SelectedItem?.ToString();
+            // удаление до делать
+            currentMapData.Markers.RemoveAll(znak => znak.Name_Znak == selected);
+            picture_map.Image = currentMapData.Get_Map();
+            UpdateMarkersUI(currentMapData.Markers);
+            UpdateTextsUI(currentMapData.Texts);
+        }
+
+        private void button_del_text_Click(object sender, EventArgs e)
+        {
+            string selected = comboBox_Del_Text.SelectedItem?.ToString();
+            currentMapData.Texts.RemoveAll(text => text.Text_map == selected);
+            UpdateMarkersUI(currentMapData.Markers);
+            UpdateTextsUI(currentMapData.Texts);
+        }
+
+        private void comboBox_protivnik_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button_set_protivnik.BackColor = Color.White;
+            button_set_own.BackColor = Color.White;
         }
     }
 }
