@@ -12,6 +12,9 @@ namespace Map_war
 {
     public partial class Form1 : Form
     {
+        private bool isDragging = false;
+        private Point dragStartPosition;
+        private Point panelStartPosition;
         private string use_map;
         private bool use_text;
         private string str_set;
@@ -31,6 +34,10 @@ namespace Map_war
             InitializeComponent();
             panel_map.AutoScroll = false;
             this.DoubleBuffered = true;
+            panel_map.TabStop = true;
+            panel_map.MouseDown += panel1_map_MouseDown;
+            panel_map.MouseMove += panel_map_MouseMove;
+            panel_map.MouseUp += panel_map_MouseUp;
         }
 
         // символ на карту        
@@ -84,6 +91,58 @@ namespace Map_war
             foreach (var marker in currentMapData.Markers)
             {
                 Draw_Image(marker.Pos_X, marker.Pos_Y, marker.Get_ZNAK());
+            }
+        }
+
+        // Исправленный метод клика мышью
+        private void panel1_map_MouseDown(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine($"Mouse down panel");
+            if (e.Button == MouseButtons.Right)
+            {
+                isDragging = true;
+                dragStartPosition = e.Location;
+                panelStartPosition = panel_map.AutoScrollPosition;
+                panel_map.Cursor = Cursors.SizeAll;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                if (str_set != "")
+                {
+                    Span_TEXT(e);
+                }
+                else
+                {
+                    Span_ZNAK(sender, e);
+                }
+            }
+        }
+
+        // Исправленный метод перемещения карты
+        private void panel_map_MouseMove(object sender, MouseEventArgs e)
+        {
+
+            if (isDragging && e.Button == MouseButtons.Right)
+            {
+                int deltaX = e.Location.X - dragStartPosition.X;
+                int deltaY = e.Location.Y - dragStartPosition.Y;
+
+                // Рассчитываем новое положение скролла
+                int newX = panelStartPosition.X - deltaX;
+                int newY = panelStartPosition.Y - deltaY;
+
+                // Устанавливаем новое положение скролла
+                panel_map.AutoScrollPosition = new Point(newX, newY);
+            }
+        }
+
+        // Добавьте метод MouseUp
+        private void panel_map_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                isDragging = false;
+                panel_map.Cursor = Cursors.Default; // Восстанавливаем курсор
             }
         }
 
@@ -218,6 +277,17 @@ namespace Map_war
         }
         private void panel1_MouseWheel(object sender, MouseEventArgs e)
         {
+
+
+            ((HandledMouseEventArgs)e).Handled = true;
+            Point currentScrollPos = panel_map.AutoScrollPosition;
+            // Инвертируем скролл-позицию
+            int scrollX = -currentScrollPos.X;
+            int scrollY = -currentScrollPos.Y;
+
+            // Координаты мыши относительно всего содержимого панели
+            Point mouseAbsolute = new Point(e.X + scrollX, e.Y + scrollY);
+
             float oldZoom = zoom;
             if (e.Delta > 0)
                 zoom *= 1.1f;
@@ -257,8 +327,12 @@ namespace Map_war
         {
             if (e.Button == MouseButtons.Right)
             {
-                mouseDownPosition = e.Location;
-                scrollPositionOnMouseDown = panel_map.AutoScrollPosition;
+                
+                    isDragging = true;
+                    dragStartPosition = e.Location;
+                    panelStartPosition = panel_map.AutoScrollPosition;
+                    panel_map.Cursor = Cursors.SizeAll;
+                
             }
             else if (e.Button == MouseButtons.Left)
             {
@@ -275,13 +349,21 @@ namespace Map_war
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (isDragging && e.Button == MouseButtons.Right)
             {
-                int dx = e.Location.X - mouseDownPosition.X;
-                int dy = e.Location.Y - mouseDownPosition.Y;
-                panel_map.AutoScrollPosition = new Point(-(scrollPositionOnMouseDown.X + dx),-(scrollPositionOnMouseDown.Y + dy));
+                int deltaX = e.Location.X - dragStartPosition.X;
+                int deltaY = e.Location.Y - dragStartPosition.Y;
+
+                // Рассчитываем новое положение скролла
+                int newX = panelStartPosition.X - deltaX;
+                int newY = panelStartPosition.Y - deltaY;
+
+                // Устанавливаем новое положение скролла
+                panel_map.AutoScrollPosition = new Point(newX, newY);
             }
         }
+
+ 
 
         private void button_text_Click(object sender, EventArgs e)
         {
@@ -432,7 +514,9 @@ namespace Map_war
         {
             string selected = comboBox_Delete_Znak.SelectedItem?.ToString();
             // удаление до делать
-            currentMapData.Markers.RemoveAll(znak => znak.Name_Znak == selected);
+            comboBox_Delete_Znak.Items.Remove(selected);
+            var isSearch = currentMapData.Markers.FirstOrDefault(znak => znak.Name_Znak == selected);
+            if (isSearch != null) currentMapData.Markers.Remove(isSearch);
             picture_map.Image = currentMapData.Get_Map();
             UpdateMarkersUI(currentMapData.Markers);
             UpdateTextsUI(currentMapData.Texts);
