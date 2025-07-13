@@ -29,6 +29,8 @@ namespace Map_war
         public Form1()
         {
             InitializeComponent();
+            panel_map.AutoScroll = false;
+            this.DoubleBuffered = true;
         }
 
         // символ на карту        
@@ -223,7 +225,7 @@ namespace Map_war
                 zoom /= 1.1f;
 
             // Ограничиваем масштаб
-            zoom = Math.Max(0.1f, Math.Min(zoom, 10f));
+            zoom = Math.Max(0.1f, Math.Min(zoom, 2));
 
             // Получаем текущие значения прокрутки (AutoScrollPosition возвращает отрицательные значения)
             Point scrollPos = panel_map.AutoScrollPosition;
@@ -236,12 +238,14 @@ namespace Map_war
             int mouseX = e.Location.X - scrollPos.X; // scrollPos.X отрицательное, поэтому минус
             int mouseY = e.Location.Y - scrollPos.Y;
 
-            // Рассчитываем новую позицию прокрутки, чтобы курсор остался на том же месте изображения
-            int newScrollX = (int)(mouseX * (zoom / oldZoom) - e.Location.X);
-            int newScrollY = (int)(mouseY * (zoom / oldZoom) - e.Location.Y);
+            int newScrollX = (int)((panel_map.HorizontalScroll.Value + e.X) * (zoom / oldZoom) - e.X);
+            int newScrollY = (int)((panel_map.VerticalScroll.Value + e.Y) * (zoom / oldZoom) - e.Y);
 
-            // Устанавливаем прокрутку (передаём положительные значения)
-            panel_map.AutoScrollPosition = new Point(newScrollX, newScrollY);
+            // Плавное перемещение к новой позиции
+            panel_map.AutoScrollPosition = new Point(
+                Math.Max(0, Math.Min(newScrollX, panel_map.HorizontalScroll.Maximum)),
+                Math.Max(0, Math.Min(newScrollY, panel_map.VerticalScroll.Maximum))
+            );
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
