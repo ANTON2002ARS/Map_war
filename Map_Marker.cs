@@ -26,17 +26,26 @@ namespace Map_war
         {
             if (img == null) return null;
 
-            // Создаём новый пустой Bitmap с увеличенным размером, чтобы уместить повернутое изображение
-            Bitmap rotatedBmp = new Bitmap(img.Width, img.Height);
+            // Радианы для расчёта sin и cos
+            double radians = angle * Math.PI / 180;
+
+            // Ширина и высота исходного изображения
+            double cos = Math.Abs(Math.Cos(radians));
+            double sin = Math.Abs(Math.Sin(radians));
+
+            int newWidth = (int)Math.Round(img.Width * cos + img.Height * sin);
+            int newHeight = (int)Math.Round(img.Width * sin + img.Height * cos);
+
+            Bitmap rotatedBmp = new Bitmap(newWidth, newHeight);
             rotatedBmp.SetResolution(img.HorizontalResolution, img.VerticalResolution);
 
             using (Graphics g = Graphics.FromImage(rotatedBmp))
             {
-                // Перемещаем начало координат в центр изображения
-                g.TranslateTransform((float)img.Width / 2, (float)img.Height / 2);
+                // Переносим начало координат в центр нового изображения
+                g.TranslateTransform((float)newWidth / 2, (float)newHeight / 2);
                 // Поворачиваем
                 g.RotateTransform(angle);
-                // Возвращаем начало координат обратно
+                // Смещаем обратно на центр исходника
                 g.TranslateTransform(-(float)img.Width / 2, -(float)img.Height / 2);
                 // Рисуем исходное изображение
                 g.DrawImage(img, new Point(0, 0));

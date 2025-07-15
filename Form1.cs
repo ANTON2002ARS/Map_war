@@ -279,7 +279,7 @@ namespace Map_war
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            currentMapData.Map = "октябрьской_городок";
+            currentMapData.Map = "СВЕТЛОВ";
             picture_map.Image = currentMapData.Get_Map();
             //overlayImage = Properties.Resources.знак_Т;
             panel_map.MouseWheel += panel1_MouseWheel;
