@@ -174,10 +174,10 @@ namespace Map_war
             this.picture_map.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picture_map.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.picture_map.Image = global::Map_war.Properties.Resources.СВЕТЛОВ;
-            this.picture_map.Location = new System.Drawing.Point(7, 10);
+            this.picture_map.Location = new System.Drawing.Point(-1, -15);
             this.picture_map.Margin = new System.Windows.Forms.Padding(0);
             this.picture_map.Name = "picture_map";
-            this.picture_map.Size = new System.Drawing.Size(5420, 5998);
+            this.picture_map.Size = new System.Drawing.Size(5354, 5975);
             this.picture_map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picture_map.TabIndex = 0;
             this.picture_map.TabStop = false;

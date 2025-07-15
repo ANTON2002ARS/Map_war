@@ -17,6 +17,7 @@ namespace Map_war
         private Point panelStartPosition;
         private string use_map;
         private bool use_text;
+        private Point scrollStartPosition; // Добавляем переменную
         private string str_set;
         // Глобальные переменные формы
         float zoom = 0.5f; // коэффициент масштабирования
@@ -32,12 +33,43 @@ namespace Map_war
         public Form1()
         {
             InitializeComponent();
-            panel_map.AutoScroll = false;
+            //panel_map.AutoScroll = false;
             this.DoubleBuffered = true;
             panel_map.TabStop = true;
-            panel_map.MouseDown += panel1_map_MouseDown;
+            panel_map.HorizontalScroll.Visible = true; // Включаем скролл-бары
+            panel_map.VerticalScroll.Visible = true;
+            panel_map.HorizontalScroll.Enabled = true;
+            panel_map.VerticalScroll.Enabled = true;
             panel_map.MouseMove += panel_map_MouseMove;
+            panel_map.MouseDown += panel_map_MouseDown;
             panel_map.MouseUp += panel_map_MouseUp;
+            picture_map.Location = new Point(0, 0);
+            panel_map.Controls.Add(picture_map);
+        }
+
+        private void UpdateScrollBars()
+        {
+            if (picture_map.Image == null) return;
+
+            // Устанавливаем максимальные значения скролла
+            panel_map.HorizontalScroll.Maximum = Math.Max(0, picture_map.Width - panel_map.ClientSize.Width);
+            panel_map.VerticalScroll.Maximum = Math.Max(0, picture_map.Height - panel_map.ClientSize.Height);
+
+            // Обновляем видимость скролл-баров
+            panel_map.HorizontalScroll.Visible = (picture_map.Width > panel_map.ClientSize.Width);
+            panel_map.VerticalScroll.Visible = (picture_map.Height > panel_map.ClientSize.Height);
+        }
+
+        private void SetScrollPosition(int x, int y)
+        {
+            // Ограничиваем значения скролла
+            x = Math.Max(0, Math.Min(x, panel_map.HorizontalScroll.Maximum));
+            y = Math.Max(0, Math.Min(y, panel_map.VerticalScroll.Maximum));
+
+            // Устанавливаем новые позиции
+            panel_map.HorizontalScroll.Value = x;
+            panel_map.VerticalScroll.Value = y;
+            panel_map.PerformLayout(); // Применяем изменения
         }
 
         // символ на карту        
@@ -95,54 +127,47 @@ namespace Map_war
         }
 
         // Исправленный метод клика мышью
-        private void panel1_map_MouseDown(object sender, MouseEventArgs e)
+        private void panel_map_MouseDown(object sender, MouseEventArgs e)
         {
-            Console.WriteLine($"Mouse down panel");
             if (e.Button == MouseButtons.Right)
             {
                 isDragging = true;
                 dragStartPosition = e.Location;
-                panelStartPosition = panel_map.AutoScrollPosition;
+
+                // Сохраняем ТЕКУЩИЕ значения скролла (не AutoScrollPosition!)
+                scrollPositionOnMouseDown = new Point(
+                    panel_map.HorizontalScroll.Value,
+                    panel_map.VerticalScroll.Value
+                );
+
                 panel_map.Cursor = Cursors.SizeAll;
             }
-            else if (e.Button == MouseButtons.Left)
-            {
-                if (str_set != "")
-                {
-                    Span_TEXT(e);
-                }
-                else
-                {
-                    Span_ZNAK(sender, e);
-                }
-            }
+
+       
         }
 
-        // Исправленный метод перемещения карты
         private void panel_map_MouseMove(object sender, MouseEventArgs e)
         {
-
             if (isDragging && e.Button == MouseButtons.Right)
             {
-                int deltaX = e.Location.X - dragStartPosition.X;
-                int deltaY = e.Location.Y - dragStartPosition.Y;
+                int deltaX = e.X - dragStartPosition.X;
+                int deltaY = e.Y - dragStartPosition.Y;
 
-                // Рассчитываем новое положение скролла
-                int newX = panelStartPosition.X - deltaX;
-                int newY = panelStartPosition.Y - deltaY;
+                // Вычисляем новые позиции скролла
+                int newX = scrollStartPosition.X - deltaX;
+                int newY = scrollStartPosition.Y - deltaY;
 
-                // Устанавливаем новое положение скролла
-                panel_map.AutoScrollPosition = new Point(newX, newY);
+                // Устанавливаем скролл
+                SetScrollPosition(newX, newY);
             }
         }
 
-        // Добавьте метод MouseUp
         private void panel_map_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 isDragging = false;
-                panel_map.Cursor = Cursors.Default; // Восстанавливаем курсор
+                panel_map.Cursor = Cursors.Default;
             }
         }
 
@@ -280,7 +305,7 @@ namespace Map_war
 
 
             ((HandledMouseEventArgs)e).Handled = true;
-            Point currentScrollPos = panel_map.AutoScrollPosition;
+            Point currentScrollPos = new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);
             // Инвертируем скролл-позицию
             int scrollX = -currentScrollPos.X;
             int scrollY = -currentScrollPos.Y;
@@ -298,11 +323,14 @@ namespace Map_war
             zoom = Math.Max(0.1f, Math.Min(zoom, 2));
 
             // Получаем текущие значения прокрутки (AutoScrollPosition возвращает отрицательные значения)
-            Point scrollPos = panel_map.AutoScrollPosition;
+            Point scrollPos = new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);
 
             // Пересчитываем размер PictureBox
             picture_map.Width = (int)(picture_map.Image.Width * zoom);
             picture_map.Height = (int)(picture_map.Image.Height * zoom);
+
+            // Обновляем скролл-бары
+            UpdateScrollBars();
 
             // Координаты мыши относительно панели с учётом прокрутки
             int mouseX = e.Location.X - scrollPos.X; // scrollPos.X отрицательное, поэтому минус
@@ -311,11 +339,13 @@ namespace Map_war
             int newScrollX = (int)((panel_map.HorizontalScroll.Value + e.X) * (zoom / oldZoom) - e.X);
             int newScrollY = (int)((panel_map.VerticalScroll.Value + e.Y) * (zoom / oldZoom) - e.Y);
 
-            // Плавное перемещение к новой позиции
-            panel_map.AutoScrollPosition = new Point(
-                Math.Max(0, Math.Min(newScrollX, panel_map.HorizontalScroll.Maximum)),
-                Math.Max(0, Math.Min(newScrollY, panel_map.VerticalScroll.Maximum))
-            );
+            // Вычисляем новую позицию скролла (чтобы курсор оставался на том же месте)
+            float zoomRatio = zoom / oldZoom;
+            int newX = (int)((panel_map.HorizontalScroll.Value + e.X) * zoomRatio - e.X);
+            int newY = (int)((panel_map.VerticalScroll.Value + e.Y) * zoomRatio - e.Y);
+
+            // Применяем новую позицию
+            SetScrollPosition(newX, newY);
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
@@ -330,7 +360,8 @@ namespace Map_war
                 
                     isDragging = true;
                     dragStartPosition = e.Location;
-                    panelStartPosition = panel_map.AutoScrollPosition;
+                    panelStartPosition =  new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);
+;
                     panel_map.Cursor = Cursors.SizeAll;
                 
             }
