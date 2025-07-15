@@ -12,6 +12,9 @@ namespace Map_war
 {
     public partial class Form1 : Form
     {
+
+        private bool isDeletedMode = false;
+
         private bool isDragging = false;
         private Point dragStartPosition;
         private Point panelStartPosition;
@@ -367,7 +370,87 @@ namespace Map_war
             }
             else if (e.Button == MouseButtons.Left)
             {
-                if(use_text == true)
+
+                if (isDeletedMode)
+                {
+                    Console.WriteLine("------------------");
+
+
+
+
+
+            Image img = picture_map.Image;
+                    Console.WriteLine($"img {img} overlay {overlayImage}");
+
+                    if (img == null) return;
+
+            int pbWidth = picture_map.Width;
+            int pbHeight = picture_map.Height;
+            int imgWidth = img.Width;
+            int imgHeight = img.Height;
+
+            float ratioWidth = (float)pbWidth / imgWidth;
+            float ratioHeight = (float)pbHeight / imgHeight;
+            float ratio = Math.Min(ratioWidth, ratioHeight);
+
+            int displayedWidth = (int)(imgWidth * ratio);
+            int displayedHeight = (int)(imgHeight * ratio);
+
+            int offsetX = (pbWidth - displayedWidth) / 2;
+            int offsetY = (pbHeight - displayedHeight) / 2;
+
+            int x = e.X - offsetX;
+            int y = e.Y - offsetY;
+
+            float imageX = x / ratio;
+            float imageY = y / ratio;
+                    Point tap = new Point(((int)imageX), (int)imageY);
+                    bool isHasMarker = false;
+
+                    for (var i = 0; i < currentMapData.Markers.Count; i++)
+                    {
+                        var znak = currentMapData.Markers[i];
+                        double d = Math.Sqrt(Math.Pow((znak.Pos_X - tap.X), 2) + Math.Pow((znak.Pos_Y - tap.Y),2));
+                        Console.WriteLine(d);
+                        if(d < 30 && d > 0)
+                        {
+                            currentMapData.Markers.Remove(znak);
+                            comboBox_Delete_Znak.Items.Remove(znak.Name_Znak);
+                            isHasMarker = true;
+                            break;
+
+                        }
+                    }
+                    Console.WriteLine($"hasMarker {isHasMarker}");
+                    if (!isHasMarker)
+                    {
+                        Point textPoint = TranslateZoomMousePosition(e.Location);
+                        for (var i = 0; i < currentMapData.Texts.Count; i++)
+                        {
+                            var text = currentMapData.Texts[i];
+                            double d = Math.Sqrt(Math.Pow((text.Position.X - textPoint.X), 2) + Math.Pow((text.Position.Y - textPoint.Y), 2));
+                            Console.WriteLine(d);
+                            if (d < 50 && d > 0)
+                            {
+                                currentMapData.Texts.Remove(text);
+                                break;
+
+                            }
+                        }
+
+                    }
+
+
+                    picture_map.Image = currentMapData.Get_Map();
+                    UpdateMarkersUI(currentMapData.Markers);
+                    UpdateTextsUI(currentMapData.Texts);
+
+
+                   
+                }
+
+
+                else if(use_text == true)
                 {
                     Span_TEXT(e);
                 }
@@ -565,6 +648,13 @@ namespace Map_war
         {
             button_set_protivnik.BackColor = Color.White;
             button_set_own.BackColor = Color.White;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            if(isDeletedMode) DelButton.BackColor = Color.White;
+            else DelButton.BackColor = Color.Gray;
+            isDeletedMode = !isDeletedMode;
         }
     }
 }

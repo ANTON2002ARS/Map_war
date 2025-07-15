@@ -62,6 +62,7 @@ namespace Map_war
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
+            this.DelButton = new System.Windows.Forms.Button();
             this.panel_map.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_map)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -185,6 +186,7 @@ namespace Map_war
             this.button_del_text.TabIndex = 37;
             this.button_del_text.Text = "Удалить текст";
             this.button_del_text.UseVisualStyleBackColor = true;
+            this.button_del_text.Visible = false;
             this.button_del_text.Click += new System.EventHandler(this.button_del_text_Click);
             // 
             // comboBox_Del_Text
@@ -194,6 +196,7 @@ namespace Map_war
             this.comboBox_Del_Text.Name = "comboBox_Del_Text";
             this.comboBox_Del_Text.Size = new System.Drawing.Size(130, 21);
             this.comboBox_Del_Text.TabIndex = 36;
+            this.comboBox_Del_Text.Visible = false;
             // 
             // button_del_znak
             // 
@@ -204,6 +207,7 @@ namespace Map_war
             this.button_del_znak.TabIndex = 35;
             this.button_del_znak.Text = "Удалить знак";
             this.button_del_znak.UseVisualStyleBackColor = true;
+            this.button_del_znak.Visible = false;
             this.button_del_znak.Click += new System.EventHandler(this.button_del_znak_Click);
             // 
             // comboBox_Delete_Znak
@@ -213,6 +217,7 @@ namespace Map_war
             this.comboBox_Delete_Znak.Name = "comboBox_Delete_Znak";
             this.comboBox_Delete_Znak.Size = new System.Drawing.Size(130, 21);
             this.comboBox_Delete_Znak.TabIndex = 9;
+            this.comboBox_Delete_Znak.Visible = false;
             // 
             // label2
             // 
@@ -433,6 +438,16 @@ namespace Map_war
             this.label6.TabIndex = 43;
             this.label6.Text = "Добавить обозначение на карту";
             // 
+            // DelButton
+            // 
+            this.DelButton.Location = new System.Drawing.Point(3, 206);
+            this.DelButton.Name = "DelButton";
+            this.DelButton.Size = new System.Drawing.Size(263, 134);
+            this.DelButton.TabIndex = 38;
+            this.DelButton.Text = "Удаление";
+            this.DelButton.UseVisualStyleBackColor = true;
+            this.DelButton.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,6 +522,7 @@ namespace Map_war
         private System.Windows.Forms.NumericUpDown numericUpDown_angle;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.Button DelButton;
     }
 }
 
