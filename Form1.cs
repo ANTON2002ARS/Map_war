@@ -650,10 +650,10 @@ namespace Map_war
             button_set_own.BackColor = Color.White;
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void DelButtonMain_Click(object sender, EventArgs e)
         {
-            if(isDeletedMode) DelButton.BackColor = Color.White;
-            else DelButton.BackColor = Color.Gray;
+            if (isDeletedMode) DelButtonMain.BackColor = Color.White;
+            else DelButtonMain.BackColor = Color.Gray;
             isDeletedMode = !isDeletedMode;
         }
     }
