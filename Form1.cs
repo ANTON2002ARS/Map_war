@@ -12,34 +12,28 @@ namespace Map_war
 {
     public partial class Form1 : Form
     {
-
         private bool isDeletedMode = false;
-
         private bool isDragging = false;
         private Point dragStartPosition;
-        private Point panelStartPosition;
-        private string use_map;
+        private Point panelStartPosition;        
         private bool use_text;
         private Point scrollStartPosition; // Добавляем переменную
         private string str_set;
         // Глобальные переменные формы
-        float zoom = 0.5f; // коэффициент масштабирования
-        Point mouseDownPosition; // точка нажатия мыши
-        Point scrollPositionOnMouseDown; // положение скролла в момент нажатия
+        float zoom = 0.5f; // коэффициент масштабирования                
         private MapData currentMapData = new MapData();
         // выбраное изображение
         private string ResourceName;
         private string name_znak;
-        Image overlayImage;      // изображение, которое будем рисовать по клику        
-        
+        // изображение, которое будем рисовать по клику       
+        Image overlayImage; 
 
         public Form1()
         {
-            InitializeComponent();
-            //panel_map.AutoScroll = false;
+            InitializeComponent();           
             this.DoubleBuffered = true;
             panel_map.TabStop = true;
-            panel_map.HorizontalScroll.Visible = true; // Включаем скролл-бары
+            panel_map.HorizontalScroll.Visible = true; 
             panel_map.VerticalScroll.Visible = true;
             panel_map.HorizontalScroll.Enabled = true;
             panel_map.VerticalScroll.Enabled = true;
@@ -53,11 +47,9 @@ namespace Map_war
         private void UpdateScrollBars()
         {
             if (picture_map.Image == null) return;
-
             // Устанавливаем максимальные значения скролла
             panel_map.HorizontalScroll.Maximum = Math.Max(0, picture_map.Width - panel_map.ClientSize.Width);
             panel_map.VerticalScroll.Maximum = Math.Max(0, picture_map.Height - panel_map.ClientSize.Height);
-
             // Обновляем видимость скролл-баров
             panel_map.HorizontalScroll.Visible = (picture_map.Width > panel_map.ClientSize.Width);
             panel_map.VerticalScroll.Visible = (picture_map.Height > panel_map.ClientSize.Height);
@@ -68,7 +60,6 @@ namespace Map_war
             // Ограничиваем значения скролла
             x = Math.Max(0, Math.Min(x, panel_map.HorizontalScroll.Maximum));
             y = Math.Max(0, Math.Min(y, panel_map.VerticalScroll.Maximum));
-
             // Устанавливаем новые позиции
             panel_map.HorizontalScroll.Value = x;
             panel_map.VerticalScroll.Value = y;
@@ -114,9 +105,6 @@ namespace Map_war
             marker.Name_Znak = name_znak;
             currentMapData.Markers.Add(marker);
             if (marker.Name_Znak == null) return;
-            comboBox_Delete_Znak.Items.Add(marker.Name_Znak);
-            /*overlayImage = null;
-            this.ResourceName = null;*/
             Console.WriteLine("Установка знака:" + marker.Pos_X + " " + marker.Pos_Y);
         }
 
@@ -136,30 +124,18 @@ namespace Map_war
             {
                 isDragging = true;
                 dragStartPosition = e.Location;
-
-                // Сохраняем ТЕКУЩИЕ значения скролла (не AutoScrollPosition!)
-                scrollPositionOnMouseDown = new Point(
-                    panel_map.HorizontalScroll.Value,
-                    panel_map.VerticalScroll.Value
-                );
-
                 panel_map.Cursor = Cursors.SizeAll;
-            }
-
-       
+            }       
         }
-
         private void panel_map_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging && e.Button == MouseButtons.Right)
             {
                 int deltaX = e.X - dragStartPosition.X;
                 int deltaY = e.Y - dragStartPosition.Y;
-
                 // Вычисляем новые позиции скролла
                 int newX = scrollStartPosition.X - deltaX;
                 int newY = scrollStartPosition.Y - deltaY;
-
                 // Устанавливаем скролл
                 SetScrollPosition(newX, newY);
             }
@@ -182,7 +158,6 @@ namespace Map_war
                 Draw_Text(text.Position, text.Text_map);
             }
         }       
-
         
         private void Draw_Image(float X, float Y, Image image)
         {
@@ -200,7 +175,6 @@ namespace Map_war
             {
                 g.DrawImage(image, new Rectangle(drawX, drawY, newWidth, newHeight));
             }
-
             picture_map.Invalidate();
         }
 
@@ -240,25 +214,20 @@ namespace Map_war
 
             return new Point(x, y);
         }
+
         // поставить текст
         private void Span_TEXT(MouseEventArgs e)
         {
             if (str_set == "")
                 return; 
             button_text.BackColor = Color.White;
-
             Point imagePoint = TranslateZoomMousePosition(e.Location);
             Draw_Text(imagePoint, str_set);
-
             Map_Text map_text = new Map_Text();
             map_text.Position = imagePoint;
             map_text.Text_map = str_set;    
-            currentMapData.Texts.Add(map_text);
-            comboBox_Del_Text.Items.Add(str_set);
-
-            //str_set = text_input.Text = "";
+            currentMapData.Texts.Add(map_text);            
         }
-
 
         private void Draw_Text(Point Point_Klick, string text)
         {
@@ -283,8 +252,7 @@ namespace Map_war
         private void Form1_Load(object sender, EventArgs e)
         {
             currentMapData.Map = "СВЕТЛОВ";
-            picture_map.Image = currentMapData.Get_Map();
-            //overlayImage = Properties.Resources.знак_Т;
+            picture_map.Image = currentMapData.Get_Map();               
             panel_map.MouseWheel += panel1_MouseWheel;
             Add_Dictionary();
         }
@@ -301,12 +269,9 @@ namespace Map_war
             {
                 comboBox_own.Items.Add(key);
             }
-
         }
         private void panel1_MouseWheel(object sender, MouseEventArgs e)
         {
-
-
             ((HandledMouseEventArgs)e).Handled = true;
             Point currentScrollPos = new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);
             // Инвертируем скролл-позицию
@@ -324,14 +289,11 @@ namespace Map_war
 
             // Ограничиваем масштаб
             zoom = Math.Max(0.1f, Math.Min(zoom, 2));
-
             // Получаем текущие значения прокрутки (AutoScrollPosition возвращает отрицательные значения)
             Point scrollPos = new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);
-
             // Пересчитываем размер PictureBox
             picture_map.Width = (int)(picture_map.Image.Width * zoom);
             picture_map.Height = (int)(picture_map.Image.Height * zoom);
-
             // Обновляем скролл-бары
             UpdateScrollBars();
 
@@ -346,7 +308,6 @@ namespace Map_war
             float zoomRatio = zoom / oldZoom;
             int newX = (int)((panel_map.HorizontalScroll.Value + e.X) * zoomRatio - e.X);
             int newY = (int)((panel_map.VerticalScroll.Value + e.Y) * zoomRatio - e.Y);
-
             // Применяем новую позицию
             SetScrollPosition(newX, newY);
         }
@@ -359,30 +320,35 @@ namespace Map_war
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {
-                
+            {                
                     isDragging = true;
                     dragStartPosition = e.Location;
-                    panelStartPosition =  new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);
-;
-                    panel_map.Cursor = Cursors.SizeAll;
-                
+                    panelStartPosition =  new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);;
+                    panel_map.Cursor = Cursors.SizeAll;                
             }
             else if (e.Button == MouseButtons.Left)
             {
-
                 if (isDeletedMode)
                 {
-                    Console.WriteLine("------------------");
+                    Delete_Obg_on_Map(e);
+                }
+                else if(use_text == true)
+                {
+                    Span_TEXT(e);
+                }
+                else
+                {
+                    Span_ZNAK(sender, e);
+                }                
+            }
+        }
 
-
-
-
-
+        private void Delete_Obg_on_Map(MouseEventArgs e)
+        {
+            Console.WriteLine("Процесс удаление обьекта с карты");
             Image img = picture_map.Image;
-                    Console.WriteLine($"img {img} overlay {overlayImage}");
-
-                    if (img == null) return;
+            Console.WriteLine($"img {img} overlay {overlayImage}");
+            if (img == null) return;
 
             int pbWidth = picture_map.Width;
             int pbHeight = picture_map.Height;
@@ -404,80 +370,56 @@ namespace Map_war
 
             float imageX = x / ratio;
             float imageY = y / ratio;
-                    Point tap = new Point(((int)imageX), (int)imageY);
-                    bool isHasMarker = false;
+            Point tap = new Point(((int)imageX), (int)imageY);
+            bool isHasMarker = false;
 
-                    for (var i = 0; i < currentMapData.Markers.Count; i++)
-                    {
-                        var znak = currentMapData.Markers[i];
-                        double d = Math.Sqrt(Math.Pow((znak.Pos_X - tap.X), 2) + Math.Pow((znak.Pos_Y - tap.Y),2));
-                        Console.WriteLine(d);
-                        if(d < 30 && d > 0)
-                        {
-                            currentMapData.Markers.Remove(znak);
-                            comboBox_Delete_Znak.Items.Remove(znak.Name_Znak);
-                            isHasMarker = true;
-                            break;
-
-                        }
-                    }
-                    Console.WriteLine($"hasMarker {isHasMarker}");
-                    if (!isHasMarker)
-                    {
-                        Point textPoint = TranslateZoomMousePosition(e.Location);
-                        for (var i = 0; i < currentMapData.Texts.Count; i++)
-                        {
-                            var text = currentMapData.Texts[i];
-                            double d = Math.Sqrt(Math.Pow((text.Position.X - textPoint.X), 2) + Math.Pow((text.Position.Y - textPoint.Y), 2));
-                            Console.WriteLine(d);
-                            if (d < 50 && d > 0)
-                            {
-                                currentMapData.Texts.Remove(text);
-                                break;
-
-                            }
-                        }
-
-                    }
-
-
-                    picture_map.Image = currentMapData.Get_Map();
-                    UpdateMarkersUI(currentMapData.Markers);
-                    UpdateTextsUI(currentMapData.Texts);
-
-
-                   
-                }
-
-
-                else if(use_text == true)
+            for (var i = 0; i < currentMapData.Markers.Count; i++)
+            {
+                var znak = currentMapData.Markers[i];
+                double d = Math.Sqrt(Math.Pow((znak.Pos_X - tap.X), 2) + Math.Pow((znak.Pos_Y - tap.Y), 2));
+                Console.WriteLine(d);
+                if (d < 30 && d > 0)
                 {
-                    Span_TEXT(e);
+                    currentMapData.Markers.Remove(znak);                    
+                    isHasMarker = true;
+                    break;
                 }
-                else
-                {
-                    Span_ZNAK(sender, e);
-                }                
             }
-        }
+            Console.WriteLine($"hasMarker {isHasMarker}");
+            if (!isHasMarker)
+            {
+                Point textPoint = TranslateZoomMousePosition(e.Location);
+                for (var i = 0; i < currentMapData.Texts.Count; i++)
+                {
+                    var text = currentMapData.Texts[i];
+                    double d = Math.Sqrt(Math.Pow((text.Position.X - textPoint.X), 2) + Math.Pow((text.Position.Y - textPoint.Y), 2));
+                    Console.WriteLine(d);
+                    if (d < 50 && d > 0)
+                    {
+                        currentMapData.Texts.Remove(text);
+                        break;
 
+                    }
+                }
+            }
+
+            picture_map.Image = currentMapData.Get_Map();
+            UpdateMarkersUI(currentMapData.Markers);
+            UpdateTextsUI(currentMapData.Texts);
+        }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging && e.Button == MouseButtons.Right)
             {
                 int deltaX = e.Location.X - dragStartPosition.X;
                 int deltaY = e.Location.Y - dragStartPosition.Y;
-
                 // Рассчитываем новое положение скролла
                 int newX = panelStartPosition.X - deltaX;
                 int newY = panelStartPosition.Y - deltaY;
-
                 // Устанавливаем новое положение скролла
                 panel_map.AutoScrollPosition = new Point(newX, newY);
             }
-        }
-
- 
+        } 
 
         private void button_text_Click(object sender, EventArgs e)
         {
@@ -497,10 +439,6 @@ namespace Map_war
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string path = saveFileDialog.FileName;
-
-                    // Перед сохранением обновите currentMapData из UI, если нужно
-                    // Например, currentMapData.Markers = GetMarkersFromUI();
-                    // currentMapData.Texts = GetTextsFromUI();
                     Save_Map save = new Save_Map();
                     save.SaveMapDataToFile(path, currentMapData);
                     MessageBox.Show("Файл сохранён успешно.", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -570,7 +508,7 @@ namespace Map_war
             "Переключение карты сотрет все обозначение с карты",
             "Внимание",
              MessageBoxButtons.YesNo,     // Кнопки Да и Нет
-            MessageBoxIcon.Question      // Значок вопроса
+             MessageBoxIcon.Question      // Значок вопроса
             );
 
             if (result == DialogResult.Yes)
@@ -579,13 +517,6 @@ namespace Map_war
                 currentMapData.Clear_Data();
             }
         }    
-
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            overlayImage = Properties.Resources.знак_верт;
-            this.ResourceName = "знак_верт";
-        }
         
         // выбор знака
         private void button_set_protivnik_Click(object sender, EventArgs e)
@@ -593,7 +524,7 @@ namespace Map_war
             button_set_protivnik.BackColor = Color.Blue;
             button_set_own.BackColor = Color.White;
             string selected = comboBox_protivnik.SelectedItem?.ToString();
-            if (selected == null) return;
+            if (selected == null) return;            
             name_znak = selected;
             Selected_Znak(Save_Map.name_znak_protivnik[selected]);
         }
@@ -610,11 +541,20 @@ namespace Map_war
 
         private void Selected_Znak(string resource_name)
         {
-            if (resource_name == null) return;
+            if (resource_name == null) 
+            {
+                Console.WriteLine("selected is null");
+                return;
+            }
             ResourceName = resource_name;
             Image image = Map_Marker.Get_Image(resource_name);
+            if (image == null)
+            {
+                MessageBox.Show("Элемента нет", "Внимание",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             int angle = (int)numericUpDown_angle.Value;
-            overlayImage = Map_Marker.RotateImage(image, angle);
+            overlayImage = Map_Marker.RotateImage(image, angle);            
             picture_test.Image = overlayImage;
             use_text = false;
         }
@@ -622,26 +562,6 @@ namespace Map_war
         private void numericUpDown_angle_ValueChanged(object sender, EventArgs e)
         {
             Selected_Znak(ResourceName);
-        }
-
-        private void button_del_znak_Click(object sender, EventArgs e)
-        {
-            string selected = comboBox_Delete_Znak.SelectedItem?.ToString();
-            // удаление до делать
-            comboBox_Delete_Znak.Items.Remove(selected);
-            var isSearch = currentMapData.Markers.FirstOrDefault(znak => znak.Name_Znak == selected);
-            if (isSearch != null) currentMapData.Markers.Remove(isSearch);
-            picture_map.Image = currentMapData.Get_Map();
-            UpdateMarkersUI(currentMapData.Markers);
-            UpdateTextsUI(currentMapData.Texts);
-        }
-
-        private void button_del_text_Click(object sender, EventArgs e)
-        {
-            string selected = comboBox_Del_Text.SelectedItem?.ToString();
-            currentMapData.Texts.RemoveAll(text => text.Text_map == selected);
-            UpdateMarkersUI(currentMapData.Markers);
-            UpdateTextsUI(currentMapData.Texts);
         }
 
         private void comboBox_protivnik_SelectedIndexChanged(object sender, EventArgs e)
@@ -655,6 +575,18 @@ namespace Map_war
             if (isDeletedMode) DelButtonMain.BackColor = Color.White;
             else DelButtonMain.BackColor = Color.Gray;
             isDeletedMode = !isDeletedMode;
+        }
+
+        private void button_Open_panel_own_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel_own.Visible = !flowLayoutPanel_own.Visible;
+            button_set_own.BackColor = Color.White;
+        }
+
+        private void button_open_panel_protivnik_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel_protivnik.Visible = !flowLayoutPanel_protivnik.Visible;
+            button_set_protivnik.BackColor = Color.White;
         }
     }
 }

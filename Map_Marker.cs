@@ -25,14 +25,11 @@ namespace Map_war
         public static Image RotateImage(Image img, float angle)
         {
             if (img == null) return null;
-
             // Радианы для расчёта sin и cos
             double radians = angle * Math.PI / 180;
-
             // Ширина и высота исходного изображения
             double cos = Math.Abs(Math.Cos(radians));
             double sin = Math.Abs(Math.Sin(radians));
-
             int newWidth = (int)Math.Round(img.Width * cos + img.Height * sin);
             int newHeight = (int)Math.Round(img.Width * sin + img.Height * cos);
 
@@ -52,6 +49,5 @@ namespace Map_war
             }
             return rotatedBmp;
         }
-
     }
 }

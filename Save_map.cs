@@ -146,9 +146,7 @@ namespace Map_war
 
         public MapData LoadMapDataFromFile(string filePath)
         {
-            if (!File.Exists(filePath))
-                return new MapData();
-
+            if (!File.Exists(filePath)) return new MapData();
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<MapData>(json) ?? new MapData();
         }        
