@@ -13,7 +13,14 @@ namespace Map_war
     public partial class Form1 : Form
     {
         private bool isDeletedMode = false;
+        private bool isDrawingLine = false;
         private bool isDragging = false;
+        private bool isDrawing = false;
+        private Point lineStartPoint;
+        private Point lineEndPoint;
+        private List<List<Point>> lines = new List<List<Point>>();
+        private List<Point> tmpLine = new List<Point>();
+        private Pen drawingPen = new Pen(Color.Brown, 10); // Перо для рисования линий
         private Point dragStartPosition;
         private Point panelStartPosition;        
         private bool use_text;
@@ -40,6 +47,7 @@ namespace Map_war
             panel_map.MouseMove += panel_map_MouseMove;
             panel_map.MouseDown += panel_map_MouseDown;
             panel_map.MouseUp += panel_map_MouseUp;
+            picture_map.Paint += picture_map_Paint;
             picture_map.Location = new Point(0, 0);
             panel_map.Controls.Add(picture_map);
         }
@@ -117,6 +125,16 @@ namespace Map_war
             }
         }
 
+
+        private void UpdateLinesUI(List<Map_Marker> markers)
+        {
+            // Обновите элементы управления, которые отображают маркеры
+            foreach (var line in currentMapData.Lines)
+            {
+                Draw_Line(line.getPoints);
+            }
+        }
+
         // Исправленный метод клика мышью
         private void panel_map_MouseDown(object sender, MouseEventArgs e)
         {
@@ -129,6 +147,8 @@ namespace Map_war
         }
         private void panel_map_MouseMove(object sender, MouseEventArgs e)
         {
+            Console.WriteLine($"isDrawingLine {isDrawingLine}");
+
             if (isDragging && e.Button == MouseButtons.Right)
             {
                 int deltaX = e.X - dragStartPosition.X;
@@ -139,6 +159,7 @@ namespace Map_war
                 // Устанавливаем скролл
                 SetScrollPosition(newX, newY);
             }
+
         }
 
         private void panel_map_MouseUp(object sender, MouseEventArgs e)
@@ -147,6 +168,25 @@ namespace Map_war
             {
                 isDragging = false;
                 panel_map.Cursor = Cursors.Default;
+            }
+            if (isDrawing && e.Button == MouseButtons.Left)
+            {
+                picture_map.Invalidate();
+            }
+        }
+
+        private void picture_map_Paint(object sender, PaintEventArgs e)
+        {
+            // Рисуем все сохраненные линии
+            foreach (var line in lines)
+            {
+                e.Graphics.DrawLine(drawingPen, line[0], line[1]);
+            }
+
+            // Рисуем текущую линию (пока кнопка нажата)
+            if (isDrawing)
+            {
+                e.Graphics.DrawLine(drawingPen, lineStartPoint, lineEndPoint);
             }
         }
 
@@ -176,6 +216,66 @@ namespace Map_war
                 g.DrawImage(image, new Rectangle(drawX, drawY, newWidth, newHeight));
             }
             picture_map.Invalidate();
+        }
+
+        private void Draw_Line(List<Point> line)
+        {
+            if (isDrawingLine)
+            {
+
+                Image img = picture_map.Image;
+                if (img == null) return;
+
+                int pbWidth = picture_map.Width;
+                int pbHeight = picture_map.Height;
+                int imgWidth = img.Width;
+                int imgHeight = img.Height;
+
+                float ratioWidth = (float)pbWidth / imgWidth;
+                float ratioHeight = (float)pbHeight / imgHeight;
+                float ratio = Math.Min(ratioWidth, ratioHeight);
+
+                int displayedWidth = (int)(imgWidth * ratio);
+                int displayedHeight = (int)(imgHeight * ratio);
+
+                int offsetX = (pbWidth - displayedWidth) / 2;
+                int offsetY = (pbHeight - displayedHeight) / 2;
+
+                foreach (var point in line)
+                {
+
+
+
+                    int x = point.X - offsetX;
+                    int y = point.Y - offsetY;
+
+
+
+                    float imageX = x / ratio;
+                    float imageY = y / ratio;
+
+                    Point currentLinePoint = new Point((int)imageX, (int)imageY);
+
+                    tmpLine.Add(currentLinePoint);
+                    Bitmap bmp = new Bitmap(picture_map.Image);
+
+                    using (Graphics g = Graphics.FromImage(bmp))
+                    {
+                        //string text = str_set;
+                        Font font = new Font("Arial", 24, FontStyle.Bold);
+                        Brush brush = Brushes.Black;
+                        // Рисуем текст с верхним левым углом в точке клика по изображению
+                        if (tmpLine.Count > 1)
+                        {
+                            g.DrawLine(drawingPen, tmpLine[tmpLine.Count - 1].X, tmpLine[tmpLine.Count - 1].Y, tmpLine[tmpLine.Count - 2].X, tmpLine[tmpLine.Count - 2].Y);
+                        }
+                    }
+                }
+                picture_map.Invalidate();
+
+
+            }
+
         }
 
         // получить координаты мышки в маштабе
@@ -328,7 +428,60 @@ namespace Map_war
             }
             else if (e.Button == MouseButtons.Left)
             {
-                if (isDeletedMode)
+                Console.WriteLine("click left");
+                Console.WriteLine($"isDrawingLine {isDrawingLine}");
+
+                if (isDrawingLine)
+                {
+
+                    Image img = picture_map.Image;
+                    if (img == null) return;
+
+                    int pbWidth = picture_map.Width;
+                    int pbHeight = picture_map.Height;
+                    int imgWidth = img.Width;
+                    int imgHeight = img.Height;
+
+                    float ratioWidth = (float)pbWidth / imgWidth;
+                    float ratioHeight = (float)pbHeight / imgHeight;
+                    float ratio = Math.Min(ratioWidth, ratioHeight);
+
+                    int displayedWidth = (int)(imgWidth * ratio);
+                    int displayedHeight = (int)(imgHeight * ratio);
+
+                    int offsetX = (pbWidth - displayedWidth) / 2;
+                    int offsetY = (pbHeight - displayedHeight) / 2;
+
+                    int x = e.X - offsetX;
+                    int y = e.Y - offsetY;
+
+                   
+
+                    float imageX = x / ratio;
+                    float imageY = y / ratio;
+
+                    Point currentLinePoint = new Point((int)imageX, (int)imageY);
+
+                    tmpLine.Add(currentLinePoint);
+                    Bitmap bmp = new Bitmap(picture_map.Image);
+
+                    using (Graphics g = Graphics.FromImage(bmp))
+                    {
+                        //string text = str_set;
+                        Font font = new Font("Arial", 24, FontStyle.Bold);
+                        Brush brush = Brushes.Black;
+                        // Рисуем текст с верхним левым углом в точке клика по изображению
+                        if(tmpLine.Count > 1)
+                        {
+                            g.DrawLine(drawingPen, tmpLine[tmpLine.Count-1].X, tmpLine[tmpLine.Count - 1].Y, tmpLine[tmpLine.Count - 2].X, tmpLine[tmpLine.Count - 2].Y);
+                        }
+                    }
+
+                    picture_map.Image = bmp;
+
+
+                }
+                else if (isDeletedMode)
                 {
                     Delete_Obg_on_Map(e);
                 }
@@ -409,6 +562,10 @@ namespace Map_war
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+
+
+            Console.WriteLine($"is Drawingssssss {isDrawing}");
+            //Console.WriteLine($"is Drawing {lines.Count}");
             if (isDragging && e.Button == MouseButtons.Right)
             {
                 int deltaX = e.Location.X - dragStartPosition.X;
@@ -418,6 +575,9 @@ namespace Map_war
                 int newY = panelStartPosition.Y - deltaY;
                 // Устанавливаем новое положение скролла
                 panel_map.AutoScrollPosition = new Point(newX, newY);
+            }
+            else
+            {
             }
         } 
 
@@ -587,6 +747,26 @@ namespace Map_war
         {
             flowLayoutPanel_protivnik.Visible = !flowLayoutPanel_protivnik.Visible;
             button_set_protivnik.BackColor = Color.White;
+        }
+
+
+        private void drawLineButton_Click(object sender, EventArgs e)
+        {
+
+            if (!isDrawingLine)
+            {
+                isDrawingLine = true;
+                drawLineButton.BackColor = Color.Gray;
+                tmpLine = new List<Point>();
+            }
+            else
+            {
+                drawLineButton.BackColor = Color.White;
+                isDrawingLine = false;
+                lines.Add(tmpLine);
+                currentMapData.Lines.Add(new Map_Line(tmpLine));
+                tmpLine = null;
+            }
         }
     }
 }
