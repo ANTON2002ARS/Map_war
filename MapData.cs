@@ -12,11 +12,13 @@ namespace Map_war
         public string Map;
         public List<Map_Marker> Markers { get; set; } = new List<Map_Marker>();
         public List<Map_Text> Texts { get; set; } = new List<Map_Text>();
+        public List<Map_Line> Lines { get; set; } = new List<Map_Line>();
 
         public void Clear_Data()
         {
             Markers.Clear();
             Texts.Clear();
+            Lines.Clear();
         }
         public Image Get_Map()
         {           
