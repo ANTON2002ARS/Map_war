@@ -9,13 +9,14 @@ namespace Map_war
 {
     public class Map_Line
     {
+        public List<Point> Points { get; set; } // Убрать private set
+
         public Map_Line(List<Point> points)
         {
-            this.Points = points;
+            this.Points = points ?? new List<Point>();
         }
 
-        public List<Point> getPoints => Points;
-
-        List<Point> Points { get; set; }
+        // Удалите getPoints, используйте напрямую Points
     }
+
 }

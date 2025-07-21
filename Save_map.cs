@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System;
 
 namespace Map_war
 {
@@ -140,6 +141,7 @@ namespace Map_war
 
         public void SaveMapDataToFile(string filePath, MapData data)
         {
+            Console.WriteLine($"data {data.Lines.Count}");
             string json = JsonConvert.SerializeObject(data, Formatting.Indented);
             File.WriteAllText(filePath, json);
         }

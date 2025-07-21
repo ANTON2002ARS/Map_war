@@ -126,12 +126,12 @@ namespace Map_war
         }
 
 
-        private void UpdateLinesUI(List<Map_Marker> markers)
+        private void UpdateLinesUI()
         {
             // Обновите элементы управления, которые отображают маркеры
             foreach (var line in currentMapData.Lines)
             {
-                Draw_Line(line.getPoints);
+                Draw_Line(line.Points);
             }
         }
 
@@ -178,15 +178,18 @@ namespace Map_war
         private void picture_map_Paint(object sender, PaintEventArgs e)
         {
             // Рисуем все сохраненные линии
-            foreach (var line in lines)
+            foreach (var line in currentMapData.Lines)
             {
-                e.Graphics.DrawLine(drawingPen, line[0], line[1]);
+                if (line.Points.Count > 1)
+                {
+                    e.Graphics.DrawLines(drawingPen, line.Points.ToArray());
+                }
             }
 
             // Рисуем текущую линию (пока кнопка нажата)
-            if (isDrawing)
+            if (isDrawingLine && tmpLine != null && tmpLine.Count > 1)
             {
-                e.Graphics.DrawLine(drawingPen, lineStartPoint, lineEndPoint);
+                e.Graphics.DrawLines(drawingPen, tmpLine.ToArray());
             }
         }
 
@@ -261,10 +264,7 @@ namespace Map_war
 
                     using (Graphics g = Graphics.FromImage(bmp))
                     {
-                        //string text = str_set;
-                        Font font = new Font("Arial", 24, FontStyle.Bold);
-                        Brush brush = Brushes.Black;
-                        // Рисуем текст с верхним левым углом в точке клика по изображению
+                      
                         if (tmpLine.Count > 1)
                         {
                             g.DrawLine(drawingPen, tmpLine[tmpLine.Count - 1].X, tmpLine[tmpLine.Count - 1].Y, tmpLine[tmpLine.Count - 2].X, tmpLine[tmpLine.Count - 2].Y);
@@ -346,7 +346,12 @@ namespace Map_war
                 g.DrawString(text, font, brush, Point_Klick);
             }
 
+            if (picture_map.Image != null)
+            {
+                picture_map.Image.Dispose();
+            }
             picture_map.Image = bmp;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -477,8 +482,11 @@ namespace Map_war
                         }
                     }
 
+                    if (picture_map.Image != null)
+                    {
+                        picture_map.Image.Dispose();
+                    }
                     picture_map.Image = bmp;
-
 
                 }
                 else if (isDeletedMode)
@@ -576,8 +584,16 @@ namespace Map_war
                 // Устанавливаем новое положение скролла
                 panel_map.AutoScrollPosition = new Point(newX, newY);
             }
-            else
+            else if (isDrawingLine && e.Button == MouseButtons.Left)
             {
+                var point = TranslateZoomMousePosition(e.Location);
+                if (tmpLine.Count == 0 ||
+                    Math.Abs(tmpLine.Last().X - point.X) > 2 ||
+                    Math.Abs(tmpLine.Last().Y - point.Y) > 2)
+                {
+                    tmpLine.Add(point);
+                    picture_map.Invalidate();
+                }
             }
         } 
 
@@ -615,6 +631,9 @@ namespace Map_war
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+
+
+
                     string path = openFileDialog.FileName;
                     Save_Map save = new Save_Map();
                     currentMapData = save.LoadMapDataFromFile(path);
@@ -626,6 +645,7 @@ namespace Map_war
                     }
                     UpdateMarkersUI(currentMapData.Markers);
                     UpdateTextsUI(currentMapData.Texts);
+                    UpdateLinesUI();
                 }
             }
         }
@@ -763,8 +783,13 @@ namespace Map_war
             {
                 drawLineButton.BackColor = Color.White;
                 isDrawingLine = false;
-                lines.Add(tmpLine);
-                currentMapData.Lines.Add(new Map_Line(tmpLine));
+                if (tmpLine != null && tmpLine.Count > 1)
+                {
+                    // Создаем копию точек для сохранения
+                    var pointsToSave = new List<Point>(tmpLine);
+                    lines.Add(pointsToSave);
+                    currentMapData.Lines.Add(new Map_Line(pointsToSave));
+                }
                 tmpLine = null;
             }
         }

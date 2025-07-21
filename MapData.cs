@@ -32,5 +32,8 @@ namespace Map_war
             }
             return (Image)Properties.Resources.ResourceManager.GetObject(Map);
         }
+
+
+
     }
 }
