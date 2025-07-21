@@ -701,6 +701,8 @@ namespace Map_war
         // выбор знака
         private void button_set_protivnik_Click(object sender, EventArgs e)
         {
+            isDeletedMode = false;
+            isDrawingLine = false;
             button_set_protivnik.BackColor = Color.Blue;
             button_set_own.BackColor = Color.White;
             string selected = comboBox_protivnik.SelectedItem?.ToString();
@@ -711,6 +713,8 @@ namespace Map_war
 
         private void button_set_own_Click(object sender, EventArgs e)
         {
+            isDeletedMode = false;
+            isDrawingLine = false;
             button_set_own.BackColor = Color.Red;
             button_set_protivnik.BackColor = Color.White;
             string selected = comboBox_own.SelectedItem?.ToString();
@@ -752,19 +756,27 @@ namespace Map_war
 
         private void DelButtonMain_Click(object sender, EventArgs e)
         {
-            if (isDeletedMode) DelButtonMain.BackColor = Color.White;
-            else DelButtonMain.BackColor = Color.Gray;
             isDeletedMode = !isDeletedMode;
+            if (isDeletedMode) DelButtonMain.BackColor = Color.Gray;
+            else DelButtonMain.BackColor = Color.White;            
         }
 
         private void button_Open_panel_own_Click(object sender, EventArgs e)
         {
+            isDeletedMode = false;
+            isDrawingLine = false;
+            drawLineButton.BackColor = Color.White;
+            DelButtonMain.BackColor = Color.White;
             flowLayoutPanel_own.Visible = !flowLayoutPanel_own.Visible;
             button_set_own.BackColor = Color.White;
         }
 
         private void button_open_panel_protivnik_Click(object sender, EventArgs e)
         {
+            isDeletedMode = false;
+            isDrawingLine = false;
+            drawLineButton.BackColor = Color.White;
+            DelButtonMain.BackColor = Color.White;
             flowLayoutPanel_protivnik.Visible = !flowLayoutPanel_protivnik.Visible;
             button_set_protivnik.BackColor = Color.White;
         }
