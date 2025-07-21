@@ -20,9 +20,10 @@ namespace Map_war
         private Point lineEndPoint;
         private List<List<Point>> lines = new List<List<Point>>();
         private List<Point> tmpLine = new List<Point>();
-        private Pen drawingPen = new Pen(Color.Brown, 10); // Перо для рисования линий
+        private Color color_line;
+        private Pen drawingPen = new Pen(Color.Black, 10); // Перо для рисования линий
         private Point dragStartPosition;
-        private Point panelStartPosition;        
+        private Point panelStartPosition;
         private bool use_text;
         private Point scrollStartPosition; // Добавляем переменную
         private string str_set;
@@ -33,21 +34,21 @@ namespace Map_war
         private string ResourceName;
         private string name_znak;
         // изображение, которое будем рисовать по клику       
-        Image overlayImage; 
+        Image overlayImage;
 
         public Form1()
         {
-            InitializeComponent();           
+            InitializeComponent();
             this.DoubleBuffered = true;
             panel_map.TabStop = true;
-            panel_map.HorizontalScroll.Visible = true; 
+            panel_map.HorizontalScroll.Visible = true;
             panel_map.VerticalScroll.Visible = true;
             panel_map.HorizontalScroll.Enabled = true;
             panel_map.VerticalScroll.Enabled = true;
             panel_map.MouseMove += panel_map_MouseMove;
             panel_map.MouseDown += panel_map_MouseDown;
             panel_map.MouseUp += panel_map_MouseUp;
-            picture_map.Paint += picture_map_Paint;
+            //picture_map.Paint += picture_map_Paint;
             picture_map.Location = new Point(0, 0);
             panel_map.Controls.Add(picture_map);
         }
@@ -106,7 +107,7 @@ namespace Map_war
             float imageY = y / ratio;
 
             Draw_Image(imageX, imageY, overlayImage);
-            Map_Marker marker = new Map_Marker();            
+            Map_Marker marker = new Map_Marker();
             marker.Pos_X = imageX;
             marker.Pos_Y = imageY;
             marker.ResourceName = this.ResourceName;
@@ -131,6 +132,7 @@ namespace Map_war
             // Обновите элементы управления, которые отображают маркеры
             foreach (var line in currentMapData.Lines)
             {
+                Console.WriteLine($"Update Lines count: {currentMapData.Lines.Count}");
                 Draw_Line(line.Points);
             }
         }
@@ -143,7 +145,7 @@ namespace Map_war
                 isDragging = true;
                 dragStartPosition = e.Location;
                 panel_map.Cursor = Cursors.SizeAll;
-            }       
+            }
         }
         private void panel_map_MouseMove(object sender, MouseEventArgs e)
         {
@@ -175,7 +177,7 @@ namespace Map_war
             }
         }
 
-        private void picture_map_Paint(object sender, PaintEventArgs e)
+        /*private void picture_map_Paint(object sender, PaintEventArgs e)
         {
             // Рисуем все сохраненные линии
             foreach (var line in currentMapData.Lines)
@@ -191,7 +193,7 @@ namespace Map_war
             {
                 e.Graphics.DrawLines(drawingPen, tmpLine.ToArray());
             }
-        }
+        }*/
 
         private void UpdateTextsUI(List<Map_Text> texts)
         {
@@ -200,8 +202,8 @@ namespace Map_war
             {
                 Draw_Text(text.Position, text.Text_map);
             }
-        }       
-        
+        }
+
         private void Draw_Image(float X, float Y, Image image)
         {
             // Масштаб для overlayImage
@@ -223,58 +225,53 @@ namespace Map_war
 
         private void Draw_Line(List<Point> line)
         {
-            if (isDrawingLine)
+
+            Image img = picture_map.Image;
+            if (img == null)
             {
-
-                Image img = picture_map.Image;
-                if (img == null) return;
-
-                int pbWidth = picture_map.Width;
-                int pbHeight = picture_map.Height;
-                int imgWidth = img.Width;
-                int imgHeight = img.Height;
-
-                float ratioWidth = (float)pbWidth / imgWidth;
-                float ratioHeight = (float)pbHeight / imgHeight;
-                float ratio = Math.Min(ratioWidth, ratioHeight);
-
-                int displayedWidth = (int)(imgWidth * ratio);
-                int displayedHeight = (int)(imgHeight * ratio);
-
-                int offsetX = (pbWidth - displayedWidth) / 2;
-                int offsetY = (pbHeight - displayedHeight) / 2;
-
-                foreach (var point in line)
-                {
-
-
-
-                    int x = point.X - offsetX;
-                    int y = point.Y - offsetY;
-
-
-
-                    float imageX = x / ratio;
-                    float imageY = y / ratio;
-
-                    Point currentLinePoint = new Point((int)imageX, (int)imageY);
-
-                    tmpLine.Add(currentLinePoint);
-                    Bitmap bmp = new Bitmap(picture_map.Image);
-
-                    using (Graphics g = Graphics.FromImage(bmp))
-                    {
-                      
-                        if (tmpLine.Count > 1)
-                        {
-                            g.DrawLine(drawingPen, tmpLine[tmpLine.Count - 1].X, tmpLine[tmpLine.Count - 1].Y, tmpLine[tmpLine.Count - 2].X, tmpLine[tmpLine.Count - 2].Y);
-                        }
-                    }
-                }
-                picture_map.Invalidate();
-
-
+                Console.WriteLine($"img is null, line count: {line.Count}");
+                return;
             }
+
+            int pbWidth = picture_map.Width;
+            int pbHeight = picture_map.Height;
+            int imgWidth = img.Width;
+            int imgHeight = img.Height;
+
+            float ratioWidth = (float)pbWidth / imgWidth;
+            float ratioHeight = (float)pbHeight / imgHeight;
+            float ratio = Math.Min(ratioWidth, ratioHeight);
+
+            int displayedWidth = (int)(imgWidth * ratio);
+            int displayedHeight = (int)(imgHeight * ratio);
+
+            int offsetX = (pbWidth - displayedWidth) / 2;
+            int offsetY = (pbHeight - displayedHeight) / 2;
+            Console.WriteLine($"start foreach ");
+
+            foreach (var point in line)
+            {
+                int x = point.X - offsetX;
+                int y = point.Y - offsetY;
+
+                float imageX = x / ratio;
+                float imageY = y / ratio;
+
+                //Point currentLinePoint = new Point((int)imageX, (int)imageY);
+
+                //tmpLine.Add(currentLinePoint);
+                Bitmap bmp = new Bitmap(picture_map.Image);
+                Console.WriteLine($"Draw line start");
+
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                   
+                        Console.WriteLine($"Draw line, tmpline: {line.Count}");
+                    g.DrawLine(drawingPen, line[line.Count - 1].X, line[line.Count - 1].Y, line[line.Count - 2].X, line[line.Count - 2].Y);             
+                }
+            }
+            picture_map.Invalidate();
+
 
         }
 
@@ -319,14 +316,14 @@ namespace Map_war
         private void Span_TEXT(MouseEventArgs e)
         {
             if (str_set == "")
-                return; 
+                return;
             button_text.BackColor = Color.White;
             Point imagePoint = TranslateZoomMousePosition(e.Location);
             Draw_Text(imagePoint, str_set);
             Map_Text map_text = new Map_Text();
             map_text.Position = imagePoint;
-            map_text.Text_map = str_set;    
-            currentMapData.Texts.Add(map_text);            
+            map_text.Text_map = str_set;
+            currentMapData.Texts.Add(map_text);
         }
 
         private void Draw_Text(Point Point_Klick, string text)
@@ -357,7 +354,7 @@ namespace Map_war
         private void Form1_Load(object sender, EventArgs e)
         {
             currentMapData.Map = "СВЕТЛОВ";
-            picture_map.Image = currentMapData.Get_Map();               
+            picture_map.Image = currentMapData.Get_Map();
             panel_map.MouseWheel += panel1_MouseWheel;
             Add_Dictionary();
         }
@@ -425,90 +422,101 @@ namespace Map_war
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {                
-                    isDragging = true;
-                    dragStartPosition = e.Location;
-                    panelStartPosition =  new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value);;
-                    panel_map.Cursor = Cursors.SizeAll;                
+            {
+                isDragging = true;
+                dragStartPosition = e.Location;
+                panelStartPosition = new Point(panel_map.HorizontalScroll.Value, panel_map.VerticalScroll.Value); ;
+                panel_map.Cursor = Cursors.SizeAll;
             }
             else if (e.Button == MouseButtons.Left)
             {
-                Console.WriteLine("click left");
-                Console.WriteLine($"isDrawingLine {isDrawingLine}");
+                //Console.WriteLine("click left");
+                //Console.WriteLine($"isDrawingLine {isDrawingLine}");
 
                 if (isDrawingLine)
                 {
-
-                    Image img = picture_map.Image;
-                    if (img == null) return;
-
-                    int pbWidth = picture_map.Width;
-                    int pbHeight = picture_map.Height;
-                    int imgWidth = img.Width;
-                    int imgHeight = img.Height;
-
-                    float ratioWidth = (float)pbWidth / imgWidth;
-                    float ratioHeight = (float)pbHeight / imgHeight;
-                    float ratio = Math.Min(ratioWidth, ratioHeight);
-
-                    int displayedWidth = (int)(imgWidth * ratio);
-                    int displayedHeight = (int)(imgHeight * ratio);
-
-                    int offsetX = (pbWidth - displayedWidth) / 2;
-                    int offsetY = (pbHeight - displayedHeight) / 2;
-
-                    int x = e.X - offsetX;
-                    int y = e.Y - offsetY;
-
-                   
-
-                    float imageX = x / ratio;
-                    float imageY = y / ratio;
-
-                    Point currentLinePoint = new Point((int)imageX, (int)imageY);
-
-                    tmpLine.Add(currentLinePoint);
-                    Bitmap bmp = new Bitmap(picture_map.Image);
-
-                    using (Graphics g = Graphics.FromImage(bmp))
-                    {
-                        //string text = str_set;
-                        Font font = new Font("Arial", 24, FontStyle.Bold);
-                        Brush brush = Brushes.Black;
-                        // Рисуем текст с верхним левым углом в точке клика по изображению
-                        if(tmpLine.Count > 1)
-                        {
-                            g.DrawLine(drawingPen, tmpLine[tmpLine.Count-1].X, tmpLine[tmpLine.Count - 1].Y, tmpLine[tmpLine.Count - 2].X, tmpLine[tmpLine.Count - 2].Y);
-                        }
-                    }
-
-                    if (picture_map.Image != null)
-                    {
-                        picture_map.Image.Dispose();
-                    }
-                    picture_map.Image = bmp;
-
+                    Draw_Line(e);
                 }
                 else if (isDeletedMode)
                 {
                     Delete_Obg_on_Map(e);
                 }
-                else if(use_text == true)
+                else if (use_text)
                 {
                     Span_TEXT(e);
                 }
                 else
                 {
                     Span_ZNAK(sender, e);
-                }                
+                }
+            }
+        }
+
+        private void Draw_Line(MouseEventArgs e)
+        {
+            Image img = picture_map.Image;
+            if (img == null) return;
+
+            int pbWidth = picture_map.Width;
+            int pbHeight = picture_map.Height;
+            int imgWidth = img.Width;
+            int imgHeight = img.Height;
+
+            float ratioWidth = (float)pbWidth / imgWidth;
+            float ratioHeight = (float)pbHeight / imgHeight;
+            float ratio = Math.Min(ratioWidth, ratioHeight);
+
+            int displayedWidth = (int)(imgWidth * ratio);
+            int displayedHeight = (int)(imgHeight * ratio);
+
+            int offsetX = (pbWidth - displayedWidth) / 2;
+            int offsetY = (pbHeight - displayedHeight) / 2;
+
+            int x = e.X - offsetX;
+            int y = e.Y - offsetY;
+
+            float imageX = x / ratio;
+            float imageY = y / ratio;
+
+            Point currentLinePoint = new Point((int)imageX, (int)imageY);
+
+            tmpLine.Add(currentLinePoint);
+            Bitmap bmp = new Bitmap(picture_map.Image);
+
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                if (tmpLine.Count > 1)
+                {
+                    if (color_line != null)
+                        drawingPen = new Pen(color_line, 10);
+                    g.DrawLine(drawingPen, tmpLine[tmpLine.Count - 1].X, tmpLine[tmpLine.Count - 1].Y, tmpLine[tmpLine.Count - 2].X, tmpLine[tmpLine.Count - 2].Y);
+                }
+            }
+
+            if (picture_map.Image != null)
+            {
+                picture_map.Image.Dispose();
+            }
+            picture_map.Image = bmp;
+
+        }
+
+        private void Save_List_Point()
+        {
+            Console.WriteLine($"tmpLine count: {tmpLine.Count}");
+            if (tmpLine.Count != 0)
+            {
+                Map_Line mapData = new Map_Line(tmpLine);
+                currentMapData.Lines.Add(mapData);
+                tmpLine.Clear();
             }
         }
 
         private void Delete_Obg_on_Map(MouseEventArgs e)
         {
-            Console.WriteLine("Процесс удаление обьекта с карты");
+            //Console.WriteLine("Процесс удаление обьекта с карты");
             Image img = picture_map.Image;
-            Console.WriteLine($"img {img} overlay {overlayImage}");
+            //Console.WriteLine($"img {img} overlay {overlayImage}");
             if (img == null) return;
 
             int pbWidth = picture_map.Width;
@@ -541,12 +549,12 @@ namespace Map_war
                 Console.WriteLine(d);
                 if (d < 30 && d > 0)
                 {
-                    currentMapData.Markers.Remove(znak);                    
+                    currentMapData.Markers.Remove(znak);
                     isHasMarker = true;
                     break;
                 }
             }
-            Console.WriteLine($"hasMarker {isHasMarker}");
+            //Console.WriteLine($"hasMarker {isHasMarker}");
             if (!isHasMarker)
             {
                 Point textPoint = TranslateZoomMousePosition(e.Location);
@@ -559,7 +567,6 @@ namespace Map_war
                     {
                         currentMapData.Texts.Remove(text);
                         break;
-
                     }
                 }
             }
@@ -570,9 +577,7 @@ namespace Map_war
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-
-
-            Console.WriteLine($"is Drawingssssss {isDrawing}");
+            //Console.WriteLine($"is Drawingssssss {isDrawing}");
             //Console.WriteLine($"is Drawing {lines.Count}");
             if (isDragging && e.Button == MouseButtons.Right)
             {
@@ -595,7 +600,7 @@ namespace Map_war
                     picture_map.Invalidate();
                 }
             }
-        } 
+        }
 
         private void button_text_Click(object sender, EventArgs e)
         {
@@ -631,14 +636,11 @@ namespace Map_war
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-
-
-
                     string path = openFileDialog.FileName;
                     Save_Map save = new Save_Map();
                     currentMapData = save.LoadMapDataFromFile(path);
                     picture_map.Image = currentMapData.Get_Map();
-                    if(picture_map.Image == null)
+                    if (picture_map.Image == null)
                     {
                         MessageBox.Show("Нет доступной карты!");
                         return;
@@ -669,8 +671,8 @@ namespace Map_war
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-            "Переключение карты сотрет все обозначение с карты",    
-            "Внимание",             
+            "Переключение карты сотрет все обозначение с карты",
+            "Внимание",
             MessageBoxButtons.YesNo,     // Кнопки Да и Нет
             MessageBoxIcon.Question      // Значок вопроса
             );
@@ -679,7 +681,7 @@ namespace Map_war
             {
                 picture_map.Image = Properties.Resources.октябрьской_городок;
                 currentMapData.Clear_Data();
-            }  
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -696,8 +698,8 @@ namespace Map_war
                 picture_map.Image = Properties.Resources.ефремов;
                 currentMapData.Clear_Data();
             }
-        }    
-        
+        }
+
         // выбор знака
         private void button_set_protivnik_Click(object sender, EventArgs e)
         {
@@ -706,7 +708,7 @@ namespace Map_war
             button_set_protivnik.BackColor = Color.Blue;
             button_set_own.BackColor = Color.White;
             string selected = comboBox_protivnik.SelectedItem?.ToString();
-            if (selected == null) return;            
+            if (selected == null) return;
             name_znak = selected;
             Selected_Znak(Save_Map.name_znak_protivnik[selected]);
         }
@@ -725,7 +727,7 @@ namespace Map_war
 
         private void Selected_Znak(string resource_name)
         {
-            if (resource_name == null) 
+            if (resource_name == null)
             {
                 Console.WriteLine("selected is null");
                 return;
@@ -738,7 +740,7 @@ namespace Map_war
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             int angle = (int)numericUpDown_angle.Value;
-            overlayImage = Map_Marker.RotateImage(image, angle);            
+            overlayImage = Map_Marker.RotateImage(image, angle);
             picture_test.Image = overlayImage;
             use_text = false;
         }
@@ -758,7 +760,7 @@ namespace Map_war
         {
             isDeletedMode = !isDeletedMode;
             if (isDeletedMode) DelButtonMain.BackColor = Color.Gray;
-            else DelButtonMain.BackColor = Color.White;            
+            else DelButtonMain.BackColor = Color.White;
         }
 
         private void button_Open_panel_own_Click(object sender, EventArgs e)
@@ -784,12 +786,25 @@ namespace Map_war
 
         private void drawLineButton_Click(object sender, EventArgs e)
         {
+            Panel_draw_line.Visible = !Panel_draw_line.Visible;
+        }
 
+        private void button_shoice_color_Click(object sender, EventArgs e)
+        {
+            if (colorDialog_line.ShowDialog() == DialogResult.OK)
+            {
+                color_line = colorDialog_line.Color; // пример: смена фона формы
+            }
+        }
+
+        private void button_set_line_Click(object sender, EventArgs e)
+        {
             if (!isDrawingLine)
             {
                 isDrawingLine = true;
                 drawLineButton.BackColor = Color.Gray;
                 tmpLine = new List<Point>();
+                Save_List_Point();
             }
             else
             {

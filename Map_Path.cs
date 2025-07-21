@@ -10,7 +10,7 @@ namespace Map_war
     public class Map_Line
     {
         public List<Point> Points { get; set; } // Убрать private set
-
+        public List<Color> colors { get; set; }
         public Map_Line(List<Point> points)
         {
             this.Points = points ?? new List<Point>();
