@@ -16,6 +16,10 @@ namespace Map_war
         private bool isDrawingLine = false;
         private bool isDragging = false;
         private bool isDrawing = false;
+        private bool isDeletedLine = false;
+
+        private LineHandler lineHandler = new LineHandler();
+
         private Point lineStartPoint;
         private Point lineEndPoint;
         private List<List<Point>> lines = new List<List<Point>>();
@@ -177,23 +181,6 @@ namespace Map_war
             }
         }
 
-        /*private void picture_map_Paint(object sender, PaintEventArgs e)
-        {
-            // Рисуем все сохраненные линии
-            foreach (var line in currentMapData.Lines)
-            {
-                if (line.Points.Count > 1)
-                {
-                    e.Graphics.DrawLines(drawingPen, line.Points.ToArray());
-                }
-            }
-
-            // Рисуем текущую линию (пока кнопка нажата)
-            if (isDrawingLine && tmpLine != null && tmpLine.Count > 1)
-            {
-                e.Graphics.DrawLines(drawingPen, tmpLine.ToArray());
-            }
-        }*/
 
         private void UpdateTextsUI(List<Map_Text> texts)
         {
@@ -442,7 +429,16 @@ namespace Map_war
                 //Console.WriteLine("click left");
                 //Console.WriteLine($"isDrawingLine {isDrawingLine}");
 
-                if (isDrawingLine)
+                if (isDeletedLine)
+                {
+                    Console.WriteLine($"before {currentMapData.Lines.Count}");
+                    var result = lineHandler.DeleteLine(currentMapData.Lines, new Point(e.X, e.Y), picture_map);
+                    Console.WriteLine(result);
+                    Console.WriteLine($"after {currentMapData.Lines.Count}");
+                    picture_map.Image = currentMapData.Get_Map();   
+                    UpdateLinesUI();
+                }
+                else if (isDrawingLine)
                 {
                     Draw_Line(e);
                 }
@@ -460,6 +456,9 @@ namespace Map_war
                 }
             }
         }
+
+
+       
 
         private void Draw_Line(MouseEventArgs e)
         {
@@ -828,6 +827,20 @@ namespace Map_war
                     currentMapData.Lines.Add(new Map_Line(pointsToSave, color_line));
                 }
                 tmpLine = null;
+            }
+        }
+
+        private void DeleteLine_Click(object sender, EventArgs e)
+        {
+            if (!isDeletedLine)
+            {
+                isDeletedLine = true;
+                DeleteLine.BackColor = Color.Gray;
+            }
+            else
+            {
+                isDeletedLine = false;
+                DeleteLine.BackColor = Color.White;
             }
         }
     }
