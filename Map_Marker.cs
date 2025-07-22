@@ -49,5 +49,20 @@ namespace Map_war
             }
             return rotatedBmp;
         }
+
+        public static Image FlipVertical(Image img)
+        {
+            Bitmap bmp = new Bitmap(img);
+            bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            return bmp;
+        }
+
+        public static Image FlipHorizontal(Image img)
+        {            
+            Bitmap bmp = new Bitmap(img);
+            bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            return bmp;
+        }
+
     }
 }

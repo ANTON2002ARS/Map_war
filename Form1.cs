@@ -20,6 +20,8 @@ namespace Map_war
 
         private LineHandler lineHandler = new LineHandler();
 
+        private bool isVertical = false;
+        private bool isHorizontal = false;
         private Point lineStartPoint;
         private Point lineEndPoint;
         private List<List<Point>> lines = new List<List<Point>>();
@@ -254,7 +256,7 @@ namespace Map_war
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                    
-                     Console.WriteLine($"Draw line, tmpline: {line.Points[i].X} {line.Points[i].Y}");
+                    Console.WriteLine($"Draw line, tmpline: {line.Points[i].X} {line.Points[i].Y}");
                     color_line = line.color;
                     drawingPen = new Pen(color_line, 10);
                     g.DrawLine(drawingPen, line.Points[i].X, line.Points[i].Y, line.Points[i- 1].X, line.Points[i - 1].Y);             
@@ -768,6 +770,10 @@ namespace Map_war
         private void DelButtonMain_Click(object sender, EventArgs e)
         {
             isDeletedMode = !isDeletedMode;
+            drawLineButton.BackColor = Color.White;
+            DelButtonMain.BackColor = Color.Gray;
+            button_Open_panel_own.BackColor = Color.White;
+            button_open_panel_protivnik.BackColor = Color.White;
             if (isDeletedMode) DelButtonMain.BackColor = Color.Gray;
             else DelButtonMain.BackColor = Color.White;
         }
@@ -778,6 +784,8 @@ namespace Map_war
             isDrawingLine = false;
             drawLineButton.BackColor = Color.White;
             DelButtonMain.BackColor = Color.White;
+            button_Open_panel_own.BackColor = Color.Gray;
+            button_open_panel_protivnik.BackColor = Color.White;
             flowLayoutPanel_own.Visible = !flowLayoutPanel_own.Visible;
             button_set_own.BackColor = Color.White;
         }
@@ -788,6 +796,8 @@ namespace Map_war
             isDrawingLine = false;
             drawLineButton.BackColor = Color.White;
             DelButtonMain.BackColor = Color.White;
+            button_Open_panel_own.BackColor = Color.White;
+            button_open_panel_protivnik.BackColor = Color.Gray;
             flowLayoutPanel_protivnik.Visible = !flowLayoutPanel_protivnik.Visible;
             button_set_protivnik.BackColor = Color.White;
         }
@@ -828,6 +838,22 @@ namespace Map_war
                 }
                 tmpLine = null;
             }
+        }
+
+        private void check_Horizontal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (overlayImage == null) return;
+            overlayImage = Map_Marker.FlipHorizontal(overlayImage);
+            picture_test.Image = overlayImage;
+
+        }
+
+        private void check_Vertical_CheckedChanged(object sender, EventArgs e)
+        {
+            if (overlayImage == null) return;
+            overlayImage = Map_Marker.FlipVertical(overlayImage);
+            picture_test.Image = overlayImage;
+
         }
 
         private void DeleteLine_Click(object sender, EventArgs e)
