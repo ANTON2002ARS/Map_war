@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System;
 
 namespace Map_war
 {
@@ -148,7 +149,10 @@ namespace Map_war
         {
             if (!File.Exists(filePath)) return new MapData();
             string json = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<MapData>(json) ?? new MapData();
+            Console.WriteLine($"json {json}");
+            var data = JsonConvert.DeserializeObject<MapData>(json) ?? new MapData();
+            Console.WriteLine($"data {data.Lines.Count}");
+            return data;
         }        
     }
 }

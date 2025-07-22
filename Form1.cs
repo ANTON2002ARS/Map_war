@@ -133,7 +133,7 @@ namespace Map_war
             foreach (var line in currentMapData.Lines)
             {
                 Console.WriteLine($"Update Lines count: {currentMapData.Lines.Count}");
-                Draw_Line(line.Points);
+                Draw_Line(line);
             }
         }
 
@@ -223,13 +223,13 @@ namespace Map_war
             picture_map.Invalidate();
         }
 
-        private void Draw_Line(List<Point> line)
+        private void Draw_Line(Map_Line line)
         {
 
             Image img = picture_map.Image;
             if (img == null)
             {
-                Console.WriteLine($"img is null, line count: {line.Count}");
+                Console.WriteLine($"img is null, line count: {line.Points}");
                 return;
             }
 
@@ -249,10 +249,12 @@ namespace Map_war
             int offsetY = (pbHeight - displayedHeight) / 2;
             Console.WriteLine($"start foreach ");
 
-            foreach (var point in line)
+            Bitmap bmp = new Bitmap(picture_map.Image);
+            Console.WriteLine($"Draw line start");
+            for (var i = 1; i < line.Points.Count; i++)
             {
-                int x = point.X - offsetX;
-                int y = point.Y - offsetY;
+                int x = line.Points[i].X - offsetX;
+                int y = line.Points[i].Y - offsetY;
 
                 float imageX = x / ratio;
                 float imageY = y / ratio;
@@ -260,17 +262,24 @@ namespace Map_war
                 //Point currentLinePoint = new Point((int)imageX, (int)imageY);
 
                 //tmpLine.Add(currentLinePoint);
-                Bitmap bmp = new Bitmap(picture_map.Image);
-                Console.WriteLine($"Draw line start");
+                
 
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                    
-                        Console.WriteLine($"Draw line, tmpline: {line.Count}");
-                    g.DrawLine(drawingPen, line[line.Count - 1].X, line[line.Count - 1].Y, line[line.Count - 2].X, line[line.Count - 2].Y);             
+                     Console.WriteLine($"Draw line, tmpline: {line.Points[i].X} {line.Points[i].Y}");
+                    color_line = line.color;
+                    drawingPen = new Pen(color_line, 10);
+                    g.DrawLine(drawingPen, line.Points[i].X, line.Points[i].Y, line.Points[i- 1].X, line.Points[i - 1].Y);             
                 }
+                
             }
-            picture_map.Invalidate();
+            if (picture_map.Image != null)
+            {
+                picture_map.Image.Dispose();
+            }
+            picture_map.Image = bmp;
+
 
 
         }
@@ -506,7 +515,7 @@ namespace Map_war
             Console.WriteLine($"tmpLine count: {tmpLine.Count}");
             if (tmpLine.Count != 0)
             {
-                Map_Line mapData = new Map_Line(tmpLine);
+                Map_Line mapData = new Map_Line(tmpLine, color_line);
                 currentMapData.Lines.Add(mapData);
                 tmpLine.Clear();
             }
@@ -639,6 +648,7 @@ namespace Map_war
                     string path = openFileDialog.FileName;
                     Save_Map save = new Save_Map();
                     currentMapData = save.LoadMapDataFromFile(path);
+                    Console.WriteLine($"currentMap data {currentMapData.Lines.Count}");
                     picture_map.Image = currentMapData.Get_Map();
                     if (picture_map.Image == null)
                     {
@@ -812,10 +822,10 @@ namespace Map_war
                 isDrawingLine = false;
                 if (tmpLine != null && tmpLine.Count > 1)
                 {
-                    // Создаем копию точек для сохранения
+                    // Создаем копию точек для сохрFанения
                     var pointsToSave = new List<Point>(tmpLine);
                     lines.Add(pointsToSave);
-                    currentMapData.Lines.Add(new Map_Line(pointsToSave));
+                    currentMapData.Lines.Add(new Map_Line(pointsToSave, color_line));
                 }
                 tmpLine = null;
             }
