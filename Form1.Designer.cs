@@ -66,6 +66,8 @@ namespace Map_war
             this.button_shoice_color = new System.Windows.Forms.Button();
             this.button_set_line = new System.Windows.Forms.Button();
             this.colorDialog_line = new System.Windows.Forms.ColorDialog();
+            this.check_Vertical = new System.Windows.Forms.CheckBox();
+            this.check_Horizontal = new System.Windows.Forms.CheckBox();
             this.panel_map.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_map)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -160,7 +162,7 @@ namespace Map_war
             this.panel_map.MinimumSize = new System.Drawing.Size(870, 740);
             this.panel_map.Name = "panel_map";
             this.panel_map.Padding = new System.Windows.Forms.Padding(5);
-            this.panel_map.Size = new System.Drawing.Size(1502, 987);
+            this.panel_map.Size = new System.Drawing.Size(870, 1031);
             this.panel_map.TabIndex = 1;
             this.panel_map.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             // 
@@ -184,7 +186,7 @@ namespace Map_war
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(8, 5);
+            this.label2.Location = new System.Drawing.Point(8, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 20);
             this.label2.TabIndex = 16;
@@ -193,13 +195,15 @@ namespace Map_war
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Controls.Add(this.check_Horizontal);
+            this.flowLayoutPanel1.Controls.Add(this.check_Vertical);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel7);
             this.flowLayoutPanel1.Controls.Add(this.picture_test);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(14, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(167, 216);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(167, 260);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel7
@@ -207,7 +211,7 @@ namespace Map_war
             this.flowLayoutPanel7.Controls.Add(this.label7);
             this.flowLayoutPanel7.Controls.Add(this.numericUpDown_angle);
             this.flowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(8, 28);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(8, 74);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
             this.flowLayoutPanel7.Padding = new System.Windows.Forms.Padding(3);
             this.flowLayoutPanel7.Size = new System.Drawing.Size(163, 30);
@@ -239,7 +243,7 @@ namespace Map_war
             // picture_test
             // 
             this.picture_test.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picture_test.Location = new System.Drawing.Point(8, 64);
+            this.picture_test.Location = new System.Drawing.Point(8, 110);
             this.picture_test.Name = "picture_test";
             this.picture_test.Size = new System.Drawing.Size(120, 120);
             this.picture_test.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -350,7 +354,7 @@ namespace Map_war
             this.flowLayoutPanel4.Controls.Add(this.label8);
             this.flowLayoutPanel4.Controls.Add(this.button_open);
             this.flowLayoutPanel4.Controls.Add(this.button_save);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(14, 234);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(12, 278);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(167, 515);
             this.flowLayoutPanel4.TabIndex = 40;
@@ -487,18 +491,40 @@ namespace Map_war
             this.button_set_line.UseVisualStyleBackColor = true;
             this.button_set_line.Click += new System.EventHandler(this.button_set_line_Click);
             // 
+            // check_Vertical
+            // 
+            this.check_Vertical.AutoSize = true;
+            this.check_Vertical.Location = new System.Drawing.Point(8, 31);
+            this.check_Vertical.Name = "check_Vertical";
+            this.check_Vertical.Size = new System.Drawing.Size(227, 17);
+            this.check_Vertical.TabIndex = 46;
+            this.check_Vertical.Text = "зеркальное отображение по вертикали";
+            this.check_Vertical.UseVisualStyleBackColor = true;
+            this.check_Vertical.CheckedChanged += new System.EventHandler(this.check_Vertical_CheckedChanged);
+            // 
+            // check_Horizontal
+            // 
+            this.check_Horizontal.AutoSize = true;
+            this.check_Horizontal.Location = new System.Drawing.Point(8, 8);
+            this.check_Horizontal.Name = "check_Horizontal";
+            this.check_Horizontal.Size = new System.Drawing.Size(238, 17);
+            this.check_Horizontal.TabIndex = 47;
+            this.check_Horizontal.Text = "зеркальное отображение по горезонтали";
+            this.check_Horizontal.UseVisualStyleBackColor = true;
+            this.check_Horizontal.CheckedChanged += new System.EventHandler(this.check_Horizontal_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1591, 799);
+            this.ClientSize = new System.Drawing.Size(951, 843);
             this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.flowLayoutPanel_protivnik);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.Panel_draw_line);
             this.Controls.Add(this.flowLayoutPanel_own);
             this.Controls.Add(this.panel_map);
-            this.MaximumSize = new System.Drawing.Size(1915, 1064);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(967, 554);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -563,6 +589,8 @@ namespace Map_war
         private System.Windows.Forms.Button button_shoice_color;
         private System.Windows.Forms.ColorDialog colorDialog_line;
         private System.Windows.Forms.Button button_set_line;
+        private System.Windows.Forms.CheckBox check_Horizontal;
+        private System.Windows.Forms.CheckBox check_Vertical;
     }
 }
 
