@@ -10,13 +10,16 @@ namespace Map_war
     public class Map_Line
     {
         public List<Point> Points { get; set; } // Убрать private set
-        public List<Color> colors { get; set; }
-        public Map_Line(List<Point> points)
+        public Color color { get; set; }
+
+        public Map_Line(List<Point> points, Color color)
         {
             this.Points = points ?? new List<Point>();
+            this.color = color;
+            if(color == null){
+                this.color = Color.Black;
+            }
         }
-
-        // Удалите getPoints, используйте напрямую Points
     }
 
 }
