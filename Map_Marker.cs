@@ -10,7 +10,11 @@ namespace Map_war
         public string ResourceName { get; set; }   // Имя ресурса
         public string Name_Znak { get; set; }       // Название знака
         public float Pos_X { get; set; }            // Координата X
-        public float Pos_Y { get; set; }            // Координата Y        
+        public float Pos_Y { get; set; }            // Координата Y
+                                                    // 
+        public float angle { get; set; }
+        public bool is_Vertical { get; set; }
+        public bool is_Horizontal { get; set; }
 
         public Image Get_ZNAK()
         {

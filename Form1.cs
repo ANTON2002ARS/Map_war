@@ -22,6 +22,7 @@ namespace Map_war
 
         private bool isVertical = false;
         private bool isHorizontal = false;
+        private float use_angle;
         private Point lineStartPoint;
         private Point lineEndPoint;
         private List<List<Point>> lines = new List<List<Point>>();
@@ -118,6 +119,9 @@ namespace Map_war
             marker.Pos_Y = imageY;
             marker.ResourceName = this.ResourceName;
             marker.Name_Znak = name_znak;
+            marker.is_Horizontal = isHorizontal;
+            marker.is_Vertical = isVertical;
+            marker.angle = use_angle;
             currentMapData.Markers.Add(marker);
             if (marker.Name_Znak == null) return;
             Console.WriteLine("Установка знака:" + marker.Pos_X + " " + marker.Pos_Y);
@@ -128,7 +132,17 @@ namespace Map_war
             // Обновите элементы управления, которые отображают маркеры
             foreach (var marker in currentMapData.Markers)
             {
-                Draw_Image(marker.Pos_X, marker.Pos_Y, marker.Get_ZNAK());
+                Image over = marker.Get_ZNAK();
+                if (marker.is_Vertical)
+                {
+                    over = Map_Marker.FlipVertical(over);
+                }
+                if (marker.is_Horizontal)
+                {
+                    over = Map_Marker.FlipHorizontal(over);
+                }
+                over = Map_Marker.RotateImage(over, marker.angle);
+                Draw_Image(marker.Pos_X, marker.Pos_Y,over);
             }
         }
 
@@ -250,8 +264,7 @@ namespace Map_war
 
                 //Point currentLinePoint = new Point((int)imageX, (int)imageY);
 
-                //tmpLine.Add(currentLinePoint);
-                
+                //tmpLine.Add(currentLinePoint);                
 
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
@@ -750,8 +763,8 @@ namespace Map_war
                 MessageBox.Show("Элемента нет", "Внимание",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            int angle = (int)numericUpDown_angle.Value;
-            overlayImage = Map_Marker.RotateImage(image, angle);
+            use_angle = (int)numericUpDown_angle.Value;
+            overlayImage = Map_Marker.RotateImage(image, use_angle);
             picture_test.Image = overlayImage;
             use_text = false;
         }
@@ -845,6 +858,7 @@ namespace Map_war
             if (overlayImage == null) return;
             overlayImage = Map_Marker.FlipHorizontal(overlayImage);
             picture_test.Image = overlayImage;
+            isHorizontal = !isHorizontal;
 
         }
 
@@ -853,7 +867,7 @@ namespace Map_war
             if (overlayImage == null) return;
             overlayImage = Map_Marker.FlipVertical(overlayImage);
             picture_test.Image = overlayImage;
-
+            isVertical = !isVertical;
         }
 
         private void DeleteLine_Click(object sender, EventArgs e)

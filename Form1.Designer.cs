@@ -83,9 +83,9 @@ namespace Map_war
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(3, 511);
+            this.button_save.Location = new System.Drawing.Point(123, 348);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(152, 23);
+            this.button_save.Size = new System.Drawing.Size(114, 23);
             this.button_save.TabIndex = 0;
             this.button_save.Text = "Сохрание карты";
             this.button_save.UseVisualStyleBackColor = true;
@@ -93,9 +93,9 @@ namespace Map_war
             // 
             // button_text
             // 
-            this.button_text.Location = new System.Drawing.Point(3, 319);
+            this.button_text.Location = new System.Drawing.Point(161, 185);
             this.button_text.Name = "button_text";
-            this.button_text.Size = new System.Drawing.Size(152, 29);
+            this.button_text.Size = new System.Drawing.Size(75, 29);
             this.button_text.TabIndex = 5;
             this.button_text.Text = "Добавить";
             this.button_text.UseVisualStyleBackColor = true;
@@ -104,16 +104,16 @@ namespace Map_war
             // text_input
             // 
             this.text_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.text_input.Location = new System.Drawing.Point(3, 284);
+            this.text_input.Location = new System.Drawing.Point(3, 185);
             this.text_input.Name = "text_input";
             this.text_input.Size = new System.Drawing.Size(152, 29);
             this.text_input.TabIndex = 8;
             // 
             // button_open
             // 
-            this.button_open.Location = new System.Drawing.Point(3, 482);
+            this.button_open.Location = new System.Drawing.Point(3, 348);
             this.button_open.Name = "button_open";
-            this.button_open.Size = new System.Drawing.Size(152, 23);
+            this.button_open.Size = new System.Drawing.Size(114, 23);
             this.button_open.TabIndex = 6;
             this.button_open.Text = "Открыть карту";
             this.button_open.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@ namespace Map_war
             // 
             // button_map_1
             // 
-            this.button_map_1.Location = new System.Drawing.Point(3, 369);
+            this.button_map_1.Location = new System.Drawing.Point(3, 235);
             this.button_map_1.Name = "button_map_1";
-            this.button_map_1.Size = new System.Drawing.Size(152, 23);
+            this.button_map_1.Size = new System.Drawing.Size(172, 23);
             this.button_map_1.TabIndex = 9;
             this.button_map_1.Text = "Светлов";
             this.button_map_1.UseVisualStyleBackColor = true;
@@ -131,9 +131,9 @@ namespace Map_war
             // 
             // button_map_3
             // 
-            this.button_map_3.Location = new System.Drawing.Point(3, 398);
+            this.button_map_3.Location = new System.Drawing.Point(3, 264);
             this.button_map_3.Name = "button_map_3";
-            this.button_map_3.Size = new System.Drawing.Size(152, 23);
+            this.button_map_3.Size = new System.Drawing.Size(172, 23);
             this.button_map_3.TabIndex = 8;
             this.button_map_3.Text = "Ефремов";
             this.button_map_3.UseVisualStyleBackColor = true;
@@ -141,9 +141,9 @@ namespace Map_war
             // 
             // button_map_2
             // 
-            this.button_map_2.Location = new System.Drawing.Point(3, 427);
+            this.button_map_2.Location = new System.Drawing.Point(3, 293);
             this.button_map_2.Name = "button_map_2";
-            this.button_map_2.Size = new System.Drawing.Size(152, 23);
+            this.button_map_2.Size = new System.Drawing.Size(172, 23);
             this.button_map_2.TabIndex = 7;
             this.button_map_2.Text = "Октябрьский городок";
             this.button_map_2.UseVisualStyleBackColor = true;
@@ -158,12 +158,12 @@ namespace Map_war
             this.panel_map.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_map.Controls.Add(this.picture_map);
             this.panel_map.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.panel_map.Location = new System.Drawing.Point(189, 12);
+            this.panel_map.Location = new System.Drawing.Point(276, 12);
             this.panel_map.MaximumSize = new System.Drawing.Size(2000, 1200);
-            this.panel_map.MinimumSize = new System.Drawing.Size(870, 740);
+            this.panel_map.MinimumSize = new System.Drawing.Size(870, 540);
             this.panel_map.Name = "panel_map";
             this.panel_map.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel_map.Size = new System.Drawing.Size(983, 814);
+            this.panel_map.Size = new System.Drawing.Size(896, 646);
             this.panel_map.TabIndex = 1;
             this.panel_map.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             // 
@@ -173,9 +173,9 @@ namespace Map_war
             this.picture_map.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.picture_map.Image = global::Map_war.Properties.Resources.СВЕТЛОВ;
             this.picture_map.Location = new System.Drawing.Point(0, 0);
-            this.picture_map.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.picture_map.Margin = new System.Windows.Forms.Padding(12);
             this.picture_map.Name = "picture_map";
-            this.picture_map.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.picture_map.Padding = new System.Windows.Forms.Padding(12);
             this.picture_map.Size = new System.Drawing.Size(850, 1303);
             this.picture_map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picture_map.TabIndex = 0;
@@ -204,14 +204,14 @@ namespace Map_war
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(167, 260);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(264, 260);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // check_Horizontal
             // 
             this.check_Horizontal.AutoSize = true;
             this.check_Horizontal.Location = new System.Drawing.Point(4, 5);
-            this.check_Horizontal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.check_Horizontal.Margin = new System.Windows.Forms.Padding(2);
             this.check_Horizontal.Name = "check_Horizontal";
             this.check_Horizontal.Size = new System.Drawing.Size(159, 30);
             this.check_Horizontal.TabIndex = 47;
@@ -223,7 +223,7 @@ namespace Map_war
             // 
             this.check_Vertical.AutoSize = true;
             this.check_Vertical.Location = new System.Drawing.Point(4, 39);
-            this.check_Vertical.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.check_Vertical.Margin = new System.Windows.Forms.Padding(2);
             this.check_Vertical.Name = "check_Vertical";
             this.check_Vertical.Size = new System.Drawing.Size(159, 30);
             this.check_Vertical.TabIndex = 46;
@@ -238,7 +238,7 @@ namespace Map_war
             this.flowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel7.Location = new System.Drawing.Point(5, 94);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.flowLayoutPanel7.Padding = new System.Windows.Forms.Padding(3);
             this.flowLayoutPanel7.Size = new System.Drawing.Size(163, 30);
             this.flowLayoutPanel7.TabIndex = 45;
             // 
@@ -282,7 +282,7 @@ namespace Map_war
             this.flowLayoutPanel_protivnik.Controls.Add(this.comboBox_protivnik);
             this.flowLayoutPanel_protivnik.Controls.Add(this.button_set_protivnik);
             this.flowLayoutPanel_protivnik.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel_protivnik.Location = new System.Drawing.Point(188, 406);
+            this.flowLayoutPanel_protivnik.Location = new System.Drawing.Point(267, 450);
             this.flowLayoutPanel_protivnik.Name = "flowLayoutPanel_protivnik";
             this.flowLayoutPanel_protivnik.Size = new System.Drawing.Size(351, 79);
             this.flowLayoutPanel_protivnik.TabIndex = 18;
@@ -326,7 +326,7 @@ namespace Map_war
             this.flowLayoutPanel_own.Controls.Add(this.comboBox_own);
             this.flowLayoutPanel_own.Controls.Add(this.button_set_own);
             this.flowLayoutPanel_own.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel_own.Location = new System.Drawing.Point(187, 321);
+            this.flowLayoutPanel_own.Location = new System.Drawing.Point(266, 365);
             this.flowLayoutPanel_own.Name = "flowLayoutPanel_own";
             this.flowLayoutPanel_own.Size = new System.Drawing.Size(351, 79);
             this.flowLayoutPanel_own.TabIndex = 39;
@@ -382,7 +382,7 @@ namespace Map_war
             this.flowLayoutPanel4.Controls.Add(this.button_save);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(6, 278);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(167, 548);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(254, 380);
             this.flowLayoutPanel4.TabIndex = 40;
             // 
             // label4
@@ -398,8 +398,8 @@ namespace Map_war
             // 
             // DeleteLine
             // 
-            this.DeleteLine.Location = new System.Drawing.Point(2, 17);
-            this.DeleteLine.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteLine.Location = new System.Drawing.Point(83, 2);
+            this.DeleteLine.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteLine.Name = "DeleteLine";
             this.DeleteLine.Size = new System.Drawing.Size(154, 35);
             this.DeleteLine.TabIndex = 49;
@@ -409,10 +409,10 @@ namespace Map_war
             // 
             // drawLineButton
             // 
-            this.drawLineButton.Location = new System.Drawing.Point(2, 56);
-            this.drawLineButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.drawLineButton.Location = new System.Drawing.Point(2, 41);
+            this.drawLineButton.Margin = new System.Windows.Forms.Padding(2);
             this.drawLineButton.Name = "drawLineButton";
-            this.drawLineButton.Size = new System.Drawing.Size(153, 49);
+            this.drawLineButton.Size = new System.Drawing.Size(153, 28);
             this.drawLineButton.TabIndex = 48;
             this.drawLineButton.Text = "Рисование маршрута";
             this.drawLineButton.UseVisualStyleBackColor = true;
@@ -420,10 +420,10 @@ namespace Map_war
             // 
             // button_Open_panel_own
             // 
-            this.button_Open_panel_own.Location = new System.Drawing.Point(2, 109);
-            this.button_Open_panel_own.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Open_panel_own.Location = new System.Drawing.Point(2, 73);
+            this.button_Open_panel_own.Margin = new System.Windows.Forms.Padding(2);
             this.button_Open_panel_own.Name = "button_Open_panel_own";
-            this.button_Open_panel_own.Size = new System.Drawing.Size(153, 49);
+            this.button_Open_panel_own.Size = new System.Drawing.Size(153, 28);
             this.button_Open_panel_own.TabIndex = 45;
             this.button_Open_panel_own.Text = "Выбор значков своих";
             this.button_Open_panel_own.UseVisualStyleBackColor = true;
@@ -431,10 +431,10 @@ namespace Map_war
             // 
             // button_open_panel_protivnik
             // 
-            this.button_open_panel_protivnik.Location = new System.Drawing.Point(2, 162);
-            this.button_open_panel_protivnik.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_open_panel_protivnik.Location = new System.Drawing.Point(2, 105);
+            this.button_open_panel_protivnik.Margin = new System.Windows.Forms.Padding(2);
             this.button_open_panel_protivnik.Name = "button_open_panel_protivnik";
-            this.button_open_panel_protivnik.Size = new System.Drawing.Size(153, 49);
+            this.button_open_panel_protivnik.Size = new System.Drawing.Size(153, 28);
             this.button_open_panel_protivnik.TabIndex = 44;
             this.button_open_panel_protivnik.Text = "Выбор значков противника";
             this.button_open_panel_protivnik.UseVisualStyleBackColor = true;
@@ -442,10 +442,10 @@ namespace Map_war
             // 
             // DelButtonMain
             // 
-            this.DelButtonMain.Location = new System.Drawing.Point(2, 215);
-            this.DelButtonMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DelButtonMain.Location = new System.Drawing.Point(2, 137);
+            this.DelButtonMain.Margin = new System.Windows.Forms.Padding(2);
             this.DelButtonMain.Name = "DelButtonMain";
-            this.DelButtonMain.Size = new System.Drawing.Size(153, 49);
+            this.DelButtonMain.Size = new System.Drawing.Size(153, 28);
             this.DelButtonMain.TabIndex = 38;
             this.DelButtonMain.Text = "Удалить обьект с карты";
             this.DelButtonMain.UseVisualStyleBackColor = true;
@@ -456,7 +456,7 @@ namespace Map_war
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(3, 266);
+            this.label6.Location = new System.Drawing.Point(3, 167);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 15);
             this.label6.TabIndex = 43;
@@ -467,7 +467,7 @@ namespace Map_war
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(3, 351);
+            this.label5.Location = new System.Drawing.Point(3, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 15);
             this.label5.TabIndex = 46;
@@ -478,7 +478,7 @@ namespace Map_war
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(3, 453);
+            this.label8.Location = new System.Drawing.Point(3, 319);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(133, 26);
             this.label8.TabIndex = 47;
@@ -491,7 +491,7 @@ namespace Map_war
             this.Panel_draw_line.Controls.Add(this.button_shoice_color);
             this.Panel_draw_line.Controls.Add(this.button_set_line);
             this.Panel_draw_line.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.Panel_draw_line.Location = new System.Drawing.Point(187, 235);
+            this.Panel_draw_line.Location = new System.Drawing.Point(266, 279);
             this.Panel_draw_line.Name = "Panel_draw_line";
             this.Panel_draw_line.Size = new System.Drawing.Size(351, 79);
             this.Panel_draw_line.TabIndex = 40;
@@ -532,7 +532,7 @@ namespace Map_war
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 841);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.flowLayoutPanel_protivnik);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -540,7 +540,7 @@ namespace Map_war
             this.Controls.Add(this.flowLayoutPanel_own);
             this.Controls.Add(this.panel_map);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimumSize = new System.Drawing.Size(1200, 880);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Карта тактической задачи";
